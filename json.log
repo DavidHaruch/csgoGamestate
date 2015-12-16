@@ -4,7 +4,7 @@
 		"appid": 730,
 		"version": 13515,
 		"steamid": "76561198009199490",
-		"timestamp": 1450238106
+		"timestamp": 1450304636
 	},
 	"map": {
 		"mode": "competitive",
@@ -25,15 +25,15 @@
 		"steamid": "76561198009199490",
 		"name": "PumA",
 		"team": "CT",
-		"activity": "textinput",
+		"activity": "playing",
 		"state": {
-			"health": 98,
-			"armor": 99,
+			"health": 100,
+			"armor": 100,
 			"helmet": true,
 			"flashed": 0,
 			"smoked": 0,
 			"burning": 0,
-			"money": 54000,
+			"money": 18150,
 			"round_kills": 0,
 			"round_killhs": 0
 		},
@@ -42,7 +42,7 @@
 				"name": "weapon_knife_m9_bayonet",
 				"paintkit": "aq_steel_knife",
 				"type": "Knife",
-				"state": "holstered"
+				"state": "active"
 			},
 			"weapon_1": {
 				"name": "weapon_usp_silencer",
@@ -50,51 +50,16 @@
 				"type": "Pistol",
 				"ammo_clip": 12,
 				"ammo_clip_max": 12,
-				"ammo_reserve": 24,
+				"ammo_reserve": 12,
 				"state": "holstered"
 			},
 			"weapon_2": {
-				"name": "weapon_smokegrenade",
+				"name": "weapon_awp",
 				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
-				"state": "holstered"
-			},
-			"weapon_3": {
-				"name": "weapon_hegrenade",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
-				"state": "holstered"
-			},
-			"weapon_4": {
-				"name": "weapon_flashbang",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 2,
-				"state": "holstered"
-			},
-			"weapon_5": {
-				"name": "weapon_m4a1",
-				"paintkit": "cu_titanstorm",
-				"type": "Rifle",
-				"ammo_clip": 23,
-				"ammo_clip_max": 30,
-				"ammo_reserve": 90,
-				"state": "active"
-			},
-			"weapon_6": {
-				"name": "weapon_incgrenade",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
-				"state": "holstered"
-			},
-			"weapon_7": {
-				"name": "weapon_decoy",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
+				"type": "SniperRifle",
+				"ammo_clip": 9,
+				"ammo_clip_max": 10,
+				"ammo_reserve": 16,
 				"state": "holstered"
 			}
 		},
@@ -104,11 +69,6 @@
 			"deaths": 0,
 			"mvps": 0,
 			"score": 0
-		}
-	},
-	"previously": {
-		"player": {
-			"activity": "playing"
 		}
 	}
 }

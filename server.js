@@ -1,7 +1,7 @@
 http = require('http');
 fs = require('fs');
 
-var parse = require("./parse.js")
+var parse = require("./parse.js");
  
 port = 6376;
 host = '127.0.0.1';
@@ -17,8 +17,9 @@ postServer = http.createServer( function(req, res) {
 			body += data;
 		});
 		req.on('end', function () {
-			console.log("POST payload: " + body);
+			// console.log("POST payload: " + body);
 			parse.logJSON(body);
+			console.log(parse.organizeWeapons(body));
 			res.end( '' );
 		});
 	}

@@ -12,7 +12,8 @@ module.exports = {
 	},
 	organizeWeapons: function (json) {
 		var csgoJson = JSON.parse(json);
-		var csgoWeapons = csgoJSON.player.weapons;
+		var csgoWeapons = csgoJson.player.weapons;
+		// console.log(csgoJson);
 
 		var weaponPrefix = "weapon_";
 
@@ -29,6 +30,14 @@ module.exports = {
 			"weapon_sg556",        // sg553
 			"weapon_ssg08",        // scout
 		];
+		var smgs = [
+			"weapon_bizon",
+			"weapon_mac10",
+			"weapon_mp7",
+			"weapon_mp9",
+			"weapon_p90",
+			"weapon_ump45",
+		];
 		var pistols = [
 			"weapon_cz75a",
 			"weapon_deagle",
@@ -43,18 +52,30 @@ module.exports = {
 		];
 		var grenades = [
 			"weapon_decoy",
+			"weapon_flashbang",
 			"weapon_hegrenade",
 			"weapon_incgrenade",
 			"weapon_molotov",
+			"weapon_smokegrenade",
 		];
 
 		if (csgoJson.player) {
 			var newWeapons = {
 				weapons: {
-					primary: {},
-					secondary: {},
+					primary: {
+						name: '',
+						ammo: 0,
+						ammo_max: 0,
+						ammo_reserve: 0,
+					},
+					secondary: {
+						name: '',
+						ammo: 0,
+						ammo_max: 0,
+						ammo_reserve: 0,
+					},
 					knife: {},
-					flash: 0,
+					flashes: 0,
 					he: 0,
 					smoke: 0,
 					molly: 0,
@@ -63,13 +84,93 @@ module.exports = {
 				},
 				currentWeapon: {
 
-				}
+				},
+				reloading: false,
 			};
 
-			for (i=0;i<8;i++) {
+			// 
+			//  I should probably write a function to do this weapon matching and the such
+			//  maybe hash table?
+			//  
+			//  I need to learn more about data structures
+			// 
+
+			if (Object.keys(csgoWeapons)) {
+			for (i=0;i<Object.keys(csgoWeapons).length;i++) {
 				var thisWeapon = csgoWeapons[weaponPrefix+i];
-				for (i=0;i<)
+				// rifles
+				for (k=0;k<rifles.length;k++) {
+					if (thisWeapon.name == rifles[k]) {
+						// console.log(thisWeapon);
+						newWeapons.weapons.primary.name = thisWeapon.name;
+						newWeapons.weapons.primary.ammo = thisWeapon.ammo_clip;
+						newWeapons.weapons.primary.ammo_max = thisWeapon.ammo_clip_max;
+						newWeapons.weapons.primary.ammo_reserve = thisWeapon.ammo_reserve;
+						break;
+					}
+				}
+				// smgs
+				for (k=0;k<smgs.length;k++) {
+					if (thisWeapon.name == smgs[k]) {
+						// console.log(thisWeapon);
+						newWeapons.weapons.primary.name = thisWeapon.name;
+						newWeapons.weapons.primary.ammo = thisWeapon.ammo_clip;
+						newWeapons.weapons.primary.ammo_max = thisWeapon.ammo_clip_max;
+						newWeapons.weapons.primary.ammo_reserve = thisWeapon.ammo_reserve;
+						break;
+					}
+				}
+				// pistols
+				for (k=0;k<pistols.length;k++) {
+					if (thisWeapon.name == pistols[k]) {
+						// console.log(thisWeapon);
+						newWeapons.weapons.secondary.name = thisWeapon.name;
+						newWeapons.weapons.secondary.ammo = thisWeapon.ammo_clip;
+						newWeapons.weapons.secondary.ammo_max = thisWeapon.ammo_clip_max;
+						newWeapons.weapons.secondary.ammo_reserve = thisWeapon.ammo_reserve;
+						break;
+					}
+				}
+				if (thisWeapon.name.indexOf("weapon_knife") >= 0)
+					newWeapons.weapons.knife = thisWeapon.name;
+
+				// nades
+				switch (thisWeapon.name) {
+					case "weapon_flashbang":
+						newWeapons.weapons.flashes = thisWeapon.ammo_reserve;
+						break;
+					case "weapon_smokegrenade":
+						newWeapons.weapons.smoke = thisWeapon.ammo_reserve;
+						break;
+					case "weapon_hegrenade":
+						newWeapons.weapons.he = thisWeapon.ammo_reserve;
+						break;
+					case "weapon_incgrenade":
+						newWeapons.weapons.molly = thisWeapon.ammo_reserve;
+						break;
+					case "weapon_molotov":
+						newWeapons.weapons.molly = thisWeapon.ammo_reserve;
+						break;
+					case "weapon_decoy":
+						newWeapons.weapons.decoy = thisWeapon.ammo_reserve;
+						break;
+					default: 
+				}
+
+				// tazer
+				if (thisWeapon.name == "weapon_taser")
+					newWeapons.weapons.zeus = true;
+
+				// weapon states
+				if (thisWeapon.state == "active")
+					newWeapons.currentWeapon = thisWeapon.name;
+				if (thisWeapon.state == "reloading")
+					newWeapons.reloading = true;
+
 			}
+			}
+			// console.log(newWeapons);
+			return newWeapons;
 		}
 		else {
 			var errReturn = {"err": "Data provided has no weapons to organize"};
