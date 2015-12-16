@@ -1,0 +1,25 @@
+{
+  "name": "csgoGameState",
+  "version": "1.0.0",
+  "description": "reads csgo data and uses it",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "util": "^0.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emphaticpuma/csgoGamestate.git"
+  },
+  "author": "emphaticpuma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emphaticpuma/csgoGamestate/issues"
+  },
+  "homepage": "https://github.com/emphaticpuma/csgoGamestate"
+}
