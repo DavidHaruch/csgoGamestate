@@ -1,0 +1,114 @@
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13515,
+		"steamid": "76561198009199490",
+		"timestamp": 1450236347
+	},
+	"map": {
+		"mode": "competitive",
+		"name": "de_dust2",
+		"phase": "live",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"round": {
+		"phase": "live"
+	},
+	"player": {
+		"steamid": "76561198009199490",
+		"name": "PumA",
+		"team": "CT",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 53800,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_m9_bayonet",
+				"paintkit": "aq_steel_knife",
+				"type": "Knife",
+				"state": "active"
+			},
+			"weapon_1": {
+				"name": "weapon_p250",
+				"paintkit": "cu_bittersweet",
+				"type": "Pistol",
+				"ammo_clip": 12,
+				"ammo_clip_max": 13,
+				"ammo_reserve": 26,
+				"state": "holstered"
+			},
+			"weapon_2": {
+				"name": "weapon_m4a1",
+				"paintkit": "cu_titanstorm",
+				"type": "Rifle",
+				"ammo_clip": 24,
+				"ammo_clip_max": 30,
+				"ammo_reserve": 66,
+				"state": "holstered"
+			},
+			"weapon_3": {
+				"name": "weapon_smokegrenade",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
+				"state": "holstered"
+			},
+			"weapon_4": {
+				"name": "weapon_hegrenade",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
+				"state": "holstered"
+			},
+			"weapon_5": {
+				"name": "weapon_flashbang",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
+				"state": "holstered"
+			},
+			"weapon_6": {
+				"name": "weapon_incgrenade",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
+				"state": "holstered"
+			}
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"weapons": {
+				"weapon_0": {
+					"state": "holstered"
+				},
+				"weapon_2": {
+					"state": "active"
+				}
+			}
+		}
+	}
+}
