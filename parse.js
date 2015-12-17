@@ -2,7 +2,10 @@
 // the way the data comes from csgo, it its mashed up, so it is easier to fit it on the server
 // ex. weapons are ordered based on how you buy them :-(
 
+var fs = require("fs");
+
 module.exports = {
+	// logs the data straight from the post requests
 	logJSON: function (json) {
 		fs.writeFile("json.log",json,function(err){
 			if (err)
@@ -50,14 +53,6 @@ module.exports = {
 			"weapon_usp_silencer",
 			"weapon_revolver",
 		];
-		var grenades = [
-			"weapon_decoy",
-			"weapon_flashbang",
-			"weapon_hegrenade",
-			"weapon_incgrenade",
-			"weapon_molotov",
-			"weapon_smokegrenade",
-		];
 
 		if (csgoJson.player) {
 			var newWeapons = {
@@ -95,7 +90,7 @@ module.exports = {
 			//  I need to learn more about data structures
 			// 
 
-			if (Object.keys(csgoWeapons)) {
+			if (csgoWeapons) {
 			for (i=0;i<Object.keys(csgoWeapons).length;i++) {
 				var thisWeapon = csgoWeapons[weaponPrefix+i];
 				// rifles
@@ -162,10 +157,12 @@ module.exports = {
 					newWeapons.weapons.zeus = true;
 
 				// weapon states
-				if (thisWeapon.state == "active")
+				if (thisWeapon.state == "active") {
 					newWeapons.currentWeapon = thisWeapon.name;
-				if (thisWeapon.state == "reloading")
+				} else if (thisWeapon.state == "reloading") {
+					newWeapons.currentWeapon = thisWeapon.name;
 					newWeapons.reloading = true;
+				}
 
 			}
 			}
@@ -176,5 +173,35 @@ module.exports = {
 			var errReturn = {"err": "Data provided has no weapons to organize"};
 			return errReturn;
 		}
-	}
+	},
+	// mostly fixes smoked, burning, flashed from 0-255 to 0-100 or fractions
+	organizeState: function (json) {
+		var csgoJson = JSON.parse(json);
+		var csgoState = csgoJson.player.state;
+
+		// function that changes number (max 255)[8 bit binary max]
+		// to anohter number (max 100) [percents/easier for humans]
+		var binaryTo100 = function (n) {
+			var out = Math.round((n/255)*100);
+			return out;
+		};
+
+		if (csgoState) {
+
+		var newState = {
+			health: csgoState.health, // 0 to 100
+			armor: csgoState.armor,   // 0 to 100
+			helmet: csgoState.helmet, // bool
+			flashed: binaryTo100(csgoState.flashed), // now 0 to 100
+			smoked: binaryTo100(csgoState.smoked),   // now 0 to 100
+			burning: binaryTo100(csgoState.burning), // now 0 to 100
+			money: 0, // 0 to max
+			kills: 0, // 0 to max
+			headshots: 0, // 0 to # of kills
+		};		
+
+		return newState;
+		}
+	},
+	// stats need to organizing
 };
