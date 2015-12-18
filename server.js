@@ -1,6 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 
+var yargs = require('yargs').argv;
+
 var express = require("express");
 var app = express();
 
@@ -27,7 +29,7 @@ var host = '127.0.0.1';
 postServer = http.createServer( function(req, res) {
 
 	if (req.method == 'POST') {
-		console.log("Handling POST request...");
+		console.log("Handling POST request... " + Math.round(+new Date()/1000));
 		res.writeHead(200, {'Content-Type': 'text/html'});
 
 		var body = '';
@@ -36,11 +38,13 @@ postServer = http.createServer( function(req, res) {
 		});
 		req.on('end', function () {
 			// console.log("POST payload: " + body);
-			parse.logJSON(body);
+			if (yargs.log === true) {
+				parse.logJSON(body);
+			}
 			// console.log(parse.organizeWeapons(body));
 			// console.log(parse.organizeState(body));
-			io.emit("update", JSON.stringify(parse.organizeState(body)));
-			io.emit("update", JSON.stringify(parse.organizeWeapons(body)));
+			io.emit("state", JSON.stringify(parse.organizeState(body)));
+			io.emit("weapons", JSON.stringify(parse.organizeWeapons(body)));
 			res.end( '' );
 		});
 	}

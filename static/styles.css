@@ -28,6 +28,7 @@ header h1 {
 
 main {
 	display: flex;
+	flex-direction: column;
 }
 
 main section {
@@ -35,10 +36,6 @@ main section {
 	flex-direction: column;
 	display: flex;
 	padding: 2rem;
-}
-
-main #map {
-	flex-basis: 100%;
 }
 
 ul {

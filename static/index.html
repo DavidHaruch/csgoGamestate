@@ -6,6 +6,7 @@
 	<title>csgoGameState - WebClient</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="socket.io.js"></script>
+	<script src="vue.js"></script>
 </head>
 
 <body>
@@ -13,11 +14,7 @@
 		<h1>csgoGameState</h1>
 	</header>
 	
-	<main>
-		<section id="map">
-			test
-		</section>
-
+	<main id="main">
 		<section id="state">
 			<h2>State</h2>
 			<ul class="state">
@@ -51,7 +48,12 @@
 				
 			</div>
 		</section>
+		<div class="test">
+			{{ weapons.primary.name }}
+			<button @click="button()">Log</button>
+		</div>
 	</main>
+
 
 
 	<script src="client.js"></script>

@@ -4,7 +4,7 @@
 		"appid": 730,
 		"version": 13515,
 		"steamid": "76561198009199490",
-		"timestamp": 1450324833
+		"timestamp": 1450388553
 	},
 	"map": {
 		"mode": "competitive",
@@ -24,8 +24,8 @@
 	"player": {
 		"steamid": "76561198009199490",
 		"name": "PumA",
-		"team": "CT",
-		"activity": "textinput",
+		"team": "T",
+		"activity": "playing",
 		"state": {
 			"health": 100,
 			"armor": 100,
@@ -33,7 +33,7 @@
 			"flashed": 0,
 			"smoked": 0,
 			"burning": 0,
-			"money": 33750,
+			"money": 45600,
 			"round_kills": 0,
 			"round_killhs": 0
 		},
@@ -45,28 +45,27 @@
 				"state": "active"
 			},
 			"weapon_1": {
-				"name": "weapon_elite",
-				"paintkit": "cu_season_elites_bravo",
+				"name": "weapon_deagle",
+				"paintkit": "aq_engraved_deagle",
 				"type": "Pistol",
-				"ammo_clip": 15,
-				"ammo_clip_max": 30,
-				"ammo_reserve": 120,
+				"ammo_clip": 7,
+				"ammo_clip_max": 7,
+				"ammo_reserve": 35,
 				"state": "holstered"
 			},
 			"weapon_2": {
-				"name": "weapon_scar20",
-				"paintkit": "aq_scar20_leak",
-				"type": "SniperRifle",
-				"ammo_clip": 8,
-				"ammo_clip_max": 20,
-				"ammo_reserve": 90,
+				"name": "weapon_c4",
+				"paintkit": "default",
+				"type": "C4",
 				"state": "holstered"
 			},
 			"weapon_3": {
-				"name": "weapon_smokegrenade",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
+				"name": "weapon_mac10",
+				"paintkit": "an_silver",
+				"type": "Submachine Gun",
+				"ammo_clip": 30,
+				"ammo_clip_max": 30,
+				"ammo_reserve": 100,
 				"state": "holstered"
 			},
 			"weapon_4": {
@@ -77,14 +76,21 @@
 				"state": "holstered"
 			},
 			"weapon_5": {
-				"name": "weapon_flashbang",
+				"name": "weapon_smokegrenade",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 1,
 				"state": "holstered"
 			},
 			"weapon_6": {
-				"name": "weapon_incgrenade",
+				"name": "weapon_flashbang",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 2,
+				"state": "holstered"
+			},
+			"weapon_7": {
+				"name": "weapon_molotov",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 1,
@@ -97,11 +103,6 @@
 			"deaths": 0,
 			"mvps": 0,
 			"score": 0
-		}
-	},
-	"previously": {
-		"player": {
-			"activity": "playing"
 		}
 	}
 }
