@@ -18,40 +18,89 @@
 		<section id="state">
 			<h2>State</h2>
 			<ul class="state">
-				<li>Health</li>
-				<li>Armor</li>
-				<li>Helmet</li>
-				<li>Flashed</li>
-				<li>Smoked</li>
-				<li>Burning</li>
-				<li>Money</li>
-				<li>Kills</li>
-				<li>Headshots</li>
+				<li>
+					Health
+					<progress value="{{ player.health }}" max="100"> {{ player.health }}</progress>
+				</li>
+				<li>
+					Armor
+					<progress value="{{ player.armor }}" max="100"> {{ player.armor }}</progress>
+				</li>
+				<li>Helmet {{ player.helmet }}</li>
+				<li>
+					Flashed
+					<progress value="{{ player.flashed }}" max="100">{{ player.flashed }}</progress>
+				</li>
+				<li>
+					Smoked 
+					<progress value="{{ player.smoked }}" max="100">{{ player.smoked }}</progress>
+				</li>
+				<li>
+					Burning 
+					<progress value="{{ player.burning }}" max="100">{{ player.burning }}</progress>
+				</li>
+				<li>Money ${{ player.money }}</li>
+				<li>Kills {{ player.kills }}</li>
+				<li>Headshots {{ player.headshots }}</li>
 			</ul>
 		</section>
 
-		<section id="weapons">
+		<section id="weapons" v-if="inventory">
 			<h2>Weapons</h2>
 			<ul class="weapons">
-				<li class="weapons__primary">Primary</li>
-				<li class="weapons__secondary">Secondary</li>
-				<li class="weapons__knife">Knife</li>
+				<li class="weapons__primary">
+					Primary
+					<img :src="inventory.weapons.primary.img" alt="@weapImg" class="weapon__img" :class="{'weapon__img-selected': isWeapon}">
+					{{ inventory.weapons.primary.name }}
+					<div class="primary__ammo">
+						<span class="ammo-current">{{ inventory.weapons.primary.ammo }} /</span>
+						<span class="ammo-reserve">{{ inventory.weapons.primary.ammo_reserve }}</span>
+					</div>
+				</li>
+				<li class="weapons__secondary">
+					<img :src="inventory.weapons.secondary.img" alt="@weapImg" class="weapon__img">
+					Secondary
+					<div class="secondary__ammo">
+						<span class="ammo-current">{{ inventory.weapons.secondary.ammo }} /</span>
+						<span class="ammo-reserve">{{ inventory.weapons.secondary.ammo_reserve }}</span>
+					</div>
+				</li>
+				<li class="weapons__knife">
+					<img :src="inventory.weapons.knife.img" alt="@weapImg" class="weapon__img">
+					Knife
+					{{ inventory.weapons.knife.name }}
+					{{ inventory.weapons.knife.img }}
+				</li>
 			</ul>
 			<ul class="grenades">
-				<li>HE</li>
-				<li>Flash</li>
-				<li>Smoke</li>
-				<li>Molly</li>
-				<li>Decoy</li>
+				<li class="grenade" v-if="inventory.weapons.he">
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-height-down/50" alt="he outline" class="weapon__img">
+					<div>HE</div>
+				</li>
+				<li class="grenade" v-if="inventory.weapons.flashes">
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="flash outline" class="weapon__img">
+					<div>Flash x {{ inventory.weapons.flashes }}</div>
+				</li>
+				<li class="grenade" v-if="inventory.weapons.smoke">
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="smoke outline" class="weapon__img">
+					<div>Smoke</div>
+				</li>
+				<li class="grenade" v-if="inventory.weapons.molly">
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="molotov outline" class="weapon__img">
+					<div>Molly</div>
+				</li>
+				<li class="grenade" v-if="inventory.weapons.incgrenade">
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="incendiary" class="weapon__img">
+					<div>Incendiary</div>
+				</li>
+				<li class="grenade" v-if="inventory.weapons.decoy">
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/7/78/Decoy_hud.png/revision/latest/scale-to-height-down/50" alt="decoy" class="weapon__img">
+					<div>Decoy</div>
+				</li>
 			</ul>
-			<div id="data">
-				
-			</div>
 		</section>
-		<div class="test">
-			{{ weapons.primary.name }}
-			<button @click="button()">Log</button>
-		</div>
+		<pre>{{ inventory | json }}</pre>
+		<pre>{{ player | json }}</pre>
 	</main>
 
 
@@ -60,3 +109,4 @@
 </body>
 
 </html>
+

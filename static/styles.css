@@ -20,6 +20,7 @@ header {
 	background-color: #3F51B5;
 	padding: 2rem;
 	color: #fff;
+	border-bottom: 1rem solid #18FFFF;
 }
 
 header h1 {
@@ -44,3 +45,21 @@ ul {
 	margin-bottom: 1em;
 	list-style: circle inside;
 }
+
+img {
+	transform: rotateY(180deg);
+}
+
+.grenade {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.grenade img {
+	height: 50px;
+}
+
+.weapon__img-selected {
+	background-color: #18FFFF;
+}
+.weapon__img {}

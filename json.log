@@ -2,17 +2,17 @@
 	"provider": {
 		"name": "Counter-Strike: Global Offensive",
 		"appid": 730,
-		"version": 13515,
+		"version": 13516,
 		"steamid": "76561198009199490",
-		"timestamp": 1450388553
+		"timestamp": 1450494745
 	},
 	"map": {
 		"mode": "competitive",
-		"name": "de_dust2",
+		"name": "de_cbble",
 		"phase": "live",
-		"round": 0,
+		"round": 2,
 		"team_ct": {
-			"score": 0
+			"score": 2
 		},
 		"team_t": {
 			"score": 0
@@ -24,7 +24,7 @@
 	"player": {
 		"steamid": "76561198009199490",
 		"name": "PumA",
-		"team": "T",
+		"team": "CT",
 		"activity": "playing",
 		"state": {
 			"health": 100,
@@ -33,7 +33,7 @@
 			"flashed": 0,
 			"smoked": 0,
 			"burning": 0,
-			"money": 45600,
+			"money": 56900,
 			"round_kills": 0,
 			"round_killhs": 0
 		},
@@ -42,37 +42,38 @@
 				"name": "weapon_knife_m9_bayonet",
 				"paintkit": "aq_steel_knife",
 				"type": "Knife",
-				"state": "active"
+				"state": "holstered"
 			},
 			"weapon_1": {
-				"name": "weapon_deagle",
-				"paintkit": "aq_engraved_deagle",
+				"name": "weapon_usp_silencer",
+				"paintkit": "cu_usp_elegant",
 				"type": "Pistol",
-				"ammo_clip": 7,
-				"ammo_clip_max": 7,
-				"ammo_reserve": 35,
+				"ammo_clip": 12,
+				"ammo_clip_max": 12,
+				"ammo_reserve": 24,
 				"state": "holstered"
 			},
 			"weapon_2": {
-				"name": "weapon_c4",
-				"paintkit": "default",
-				"type": "C4",
-				"state": "holstered"
-			},
-			"weapon_3": {
-				"name": "weapon_mac10",
-				"paintkit": "an_silver",
-				"type": "Submachine Gun",
+				"name": "weapon_m4a1",
+				"paintkit": "cu_titanstorm",
+				"type": "Rifle",
 				"ammo_clip": 30,
 				"ammo_clip_max": 30,
-				"ammo_reserve": 100,
-				"state": "holstered"
+				"ammo_reserve": 90,
+				"state": "active"
 			},
-			"weapon_4": {
+			"weapon_3": {
 				"name": "weapon_hegrenade",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 1,
+				"state": "holstered"
+			},
+			"weapon_4": {
+				"name": "weapon_flashbang",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 2,
 				"state": "holstered"
 			},
 			"weapon_5": {
@@ -83,14 +84,14 @@
 				"state": "holstered"
 			},
 			"weapon_6": {
-				"name": "weapon_flashbang",
+				"name": "weapon_incgrenade",
 				"paintkit": "default",
 				"type": "Grenade",
-				"ammo_reserve": 2,
+				"ammo_reserve": 1,
 				"state": "holstered"
 			},
 			"weapon_7": {
-				"name": "weapon_molotov",
+				"name": "weapon_decoy",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 1,
@@ -103,6 +104,18 @@
 			"deaths": 0,
 			"mvps": 0,
 			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"weapons": {
+				"weapon_1": {
+					"state": "active"
+				},
+				"weapon_2": {
+					"state": "holstered"
+				}
+			}
 		}
 	}
 }
