@@ -16,7 +16,6 @@ module.exports = {
 	organizeWeapons: function (json) {
 		var csgoJson = JSON.parse(json);
 		var csgoWeapons = csgoJson.player.weapons;
-		// console.log(csgoJson);
 
 		var weaponPrefix = "weapon_";
 
@@ -168,7 +167,6 @@ module.exports = {
 				// rifles
 				for (k=0;k<rifles.length;k++) {
 					if (thisWeapon.name == rifles[k]) {
-						// console.log(thisWeapon);
 						newWeapons.weapons.primary.name = thisWeapon.name;
 						newWeapons.weapons.primary.ammo = thisWeapon.ammo_clip;
 						newWeapons.weapons.primary.ammo_max = thisWeapon.ammo_clip_max;
@@ -180,7 +178,6 @@ module.exports = {
 				// smgs
 				for (k=0;k<smgs.length;k++) {
 					if (thisWeapon.name == smgs[k]) {
-						// console.log(thisWeapon);
 						newWeapons.weapons.primary.name = thisWeapon.name;
 						newWeapons.weapons.primary.ammo = thisWeapon.ammo_clip;
 						newWeapons.weapons.primary.ammo_max = thisWeapon.ammo_clip_max;
@@ -192,7 +189,6 @@ module.exports = {
 				// heavy
 				for (k=0;k<heavy.length;k++) {
 					if (thisWeapon.name == heavy[k]) {
-						// console.log(thisWeapon);
 						newWeapons.weapons.primary.name = thisWeapon.name;
 						newWeapons.weapons.primary.ammo = thisWeapon.ammo_clip;
 						newWeapons.weapons.primary.ammo_max = thisWeapon.ammo_clip_max;
@@ -204,7 +200,6 @@ module.exports = {
 				// pistols
 				for (k=0;k<pistols.length;k++) {
 					if (thisWeapon.name == pistols[k]) {
-						// console.log(thisWeapon);
 						newWeapons.weapons.secondary.name = thisWeapon.name;
 						newWeapons.weapons.secondary.ammo = thisWeapon.ammo_clip;
 						newWeapons.weapons.secondary.ammo_max = thisWeapon.ammo_clip_max;
@@ -255,7 +250,6 @@ module.exports = {
 
 			}
 			}
-			// console.log(newWeapons);
 			return newWeapons;
 		}
 		else {

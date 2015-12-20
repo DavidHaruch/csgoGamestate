@@ -16,6 +16,7 @@ server.listen(socketPort);
 app.use(express.static('static'));
 
 var parse = require("./parse.js");
+var interp = require("./interp.js");
  
 var port = 6376;
 var webPort = 6377;
@@ -37,12 +38,12 @@ postServer = http.createServer( function(req, res) {
 			body += data;
 		});
 		req.on('end', function () {
-			// console.log("POST payload: " + body);
 			if (yargs.log === true) {
 				parse.logJSON(body);
 			}
-			// console.log(parse.organizeWeapons(body));
-			// console.log(parse.organizeState(body));
+
+			interp.recordRounds(body);
+
 			io.emit("state", JSON.stringify(parse.organizeState(body)));
 			io.emit("weapons", JSON.stringify(parse.organizeWeapons(body)));
 			res.end( '' );

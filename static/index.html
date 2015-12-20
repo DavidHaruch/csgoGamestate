@@ -20,24 +20,24 @@
 			<ul class="state">
 				<li>
 					Health
-					<progress value="{{ player.health }}" max="100"> {{ player.health }}</progress>
+					<meter value="{{ player.health }}" max="100" min="0" low="25"> {{ player.health }}</meter>
 				</li>
 				<li>
 					Armor
-					<progress value="{{ player.armor }}" max="100"> {{ player.armor }}</progress>
+					<meter value="{{ player.armor }}" max="100" min="0"> {{ player.armor }}</meter>
 				</li>
 				<li>Helmet {{ player.helmet }}</li>
 				<li>
 					Flashed
-					<progress value="{{ player.flashed }}" max="100">{{ player.flashed }}</progress>
+					<meter value="{{ player.flashed }}" max="100" min="0">{{ player.flashed }}</meter>
 				</li>
 				<li>
 					Smoked 
-					<progress value="{{ player.smoked }}" max="100">{{ player.smoked }}</progress>
+					<meter value="{{ player.smoked }}" max="100" min="0">{{ player.smoked }}</meter>
 				</li>
 				<li>
 					Burning 
-					<progress value="{{ player.burning }}" max="100">{{ player.burning }}</progress>
+					<meter value="{{ player.burning }}" max="100" min="0">{{ player.burning }}</meter>
 				</li>
 				<li>Money ${{ player.money }}</li>
 				<li>Kills {{ player.kills }}</li>
@@ -47,6 +47,7 @@
 
 		<section id="weapons" v-if="inventory">
 			<h2>Weapons</h2>
+			
 			<ul class="weapons">
 				<li class="weapons__primary">
 					Primary
@@ -72,6 +73,7 @@
 					{{ inventory.weapons.knife.img }}
 				</li>
 			</ul>
+
 			<ul class="grenades">
 				<li class="grenade" v-if="inventory.weapons.he">
 					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-height-down/50" alt="he outline" class="weapon__img">
