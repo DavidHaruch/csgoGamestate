@@ -98,3 +98,9 @@ img {
 .red {
 	color: red;
 }
+
+.bomb__time {
+	font-size: 6em;
+	line-height: 1;
+	font-weight: bold;
+}

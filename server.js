@@ -47,7 +47,7 @@ postServer = http.createServer( function(req, res) {
 			io.emit("state", JSON.stringify(parse.organizeState(body)));
 			io.emit("weapons", JSON.stringify(parse.organizeWeapons(body)));
 			io.emit("round", JSON.stringify(parse.organizeRound(body)));
-			
+			io.emit("bombTimer", (bombTimer.readTimer()));		
 			res.end( '' );
 		});
 	}

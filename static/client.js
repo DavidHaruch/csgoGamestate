@@ -25,7 +25,7 @@ var vm = new Vue({
 			vm.$data.bombTimer = response;
 		});
 		socket.on("round",function (response) {
-			console.log(response);
+			// console.log(response);
 		});
 	},
 	computed: {
@@ -72,6 +72,9 @@ var vm = new Vue({
 		},
 	},
 	methods: {
+		flashedKills: function () {
+			
+		},
 	},
 });
 Vue.config.debug = true;

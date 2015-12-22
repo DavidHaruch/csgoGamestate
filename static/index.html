@@ -16,7 +16,8 @@
 	
 	<main id="main">
 		<section id="bombTimer" v-if="bombTimer">
-			{{ bombTimer }}
+			<div class="bomb__text">Bomb Timer</div>
+			<div class="bomb__time" :class="{'red': bombTimer <= 10}">{{ bombTimer }}</div>
 		</section>
 		<section id="state">
 			<!-- <h2>State</h2> -->
@@ -126,6 +127,14 @@
 
 
 	<script src="client.js"></script>
+	<script>
+		var sleepPreventInterval = setInterval(function() {
+    		window.location.href = "/";
+    		window.setTimeout(function() {
+      			window.stop();
+    		}, 0);
+  		}, 30000);
+	</script>
 </body>
 
 </html>

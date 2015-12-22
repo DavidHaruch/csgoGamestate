@@ -18,7 +18,7 @@ module.exports = {
 			this.startTimer();
 			return true;
 		}
-		if (json.phase == "over") {
+		if (json.phase == "over" || (json.phase == "live" && bombPlanted === false)) {
 			bombPlanted = false;
 			this.stopTimer();
 			bombTime = mp_c4timer;
@@ -33,8 +33,6 @@ module.exports = {
 	},
 	readTimer: function () {
 		if (bombPlanted) {
-			if (bombTime == mp_c4timer)
-				return "THE BOMB HAS BEEN PLANTED";
 			return bombTime;
 		}
 		else {
