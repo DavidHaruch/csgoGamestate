@@ -1,3 +1,5 @@
+# CSGO Gamestate Webapp
+
 ## Add Config to CSGO
 
 copy
@@ -42,4 +44,13 @@ The program constructs a simple web server, which processes the requests and han
 * **Mac**
 
 	1. Go to <https://nodejs.org/en/>, download the intstaller, and run.
+
+## Configure network specific settings
+
+In order for you to be able to access the information on other computers/phones on your network, you need to point the webpage to the computer you play csgo on (which will be refered to throughout this as the game computer).
+
+This works best if it is a desktop with a wired connection, wifi may be unreliable especially if you have many devices connecting and disconnecting throughout the day. You could also [give the game computer a static ip](http://www.linksys.com/us/support-article?articleNum=140106).
+
+* First, you need to find the local IP of the computer you play csgo on
+
 

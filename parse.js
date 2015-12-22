@@ -103,6 +103,7 @@ module.exports = {
 			"weapon_xm1014",
 			"weapon_m249",
 			"weapon_negev",
+			"weapon_g3sg1",
 		];
 		var pistols = [
 			"weapon_cz75a",
@@ -152,6 +153,7 @@ module.exports = {
 
 				},
 				reloading: false,
+				bomb: false,
 			};
 
 			// 
@@ -240,6 +242,10 @@ module.exports = {
 				if (thisWeapon.name == "weapon_taser")
 					newWeapons.weapons.zeus = true;
 
+				// c4
+				if (thisWeapon.name == "weapon_c4")
+					newWeapons.bomb = true;
+
 				// weapon states
 				if (thisWeapon.state == "active") {
 					newWeapons.currentWeapon = thisWeapon.name;
@@ -286,5 +292,11 @@ module.exports = {
 		return newState;
 		}
 	},
+	organizeRound: function (json) {
+		var csgoJson = JSON.parse(json);
+		var csgoRound = csgoJson.round;
+		return csgoRound;
+	},	
+
 	// stats need to organizing
 };

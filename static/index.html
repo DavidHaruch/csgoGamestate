@@ -9,14 +9,17 @@
 	<script src="vue.js"></script>
 </head>
 
-<body>
+<body id="body">
 	<header>
 		<h1>csgoGameState</h1>
 	</header>
 	
 	<main id="main">
+		<section id="bombTimer" v-if="bombTimer">
+			{{ bombTimer }}
+		</section>
 		<section id="state">
-			<h2>State</h2>
+			<!-- <h2>State</h2> -->
 			<ul class="state">
 				<li>
 					Health
@@ -46,63 +49,78 @@
 		</section>
 
 		<section id="weapons" v-if="inventory">
-			<h2>Weapons</h2>
+			<!-- <h2>Weapons</h2> -->
 			
 			<ul class="weapons">
-				<li class="weapons__primary">
-					Primary
-					<img :src="inventory.weapons.primary.img" alt="@weapImg" class="weapon__img" :class="{'weapon__img-selected': isWeapon}">
-					{{ inventory.weapons.primary.name }}
+				<li class="weapons__primary" v-if="inventory.weapons.primary.name">
+					<img :src="inventory.weapons.primary.img" class="weapon__img" :class="{'weapon__img-selected': isPrimary}">
+
+					<span class="weapon__name">{{ inventory.weapons.primary.name | realName }}</span>
+
 					<div class="primary__ammo">
-						<span class="ammo-current">{{ inventory.weapons.primary.ammo }} /</span>
+						<span class="ammo-current" :class="{'red': inventory.weapons.primary.ammo <= Math.ceil(inventory.weapons.primary.ammo_max*.175)}">{{ inventory.weapons.primary.ammo }}</span>
 						<span class="ammo-reserve">{{ inventory.weapons.primary.ammo_reserve }}</span>
 					</div>
 				</li>
-				<li class="weapons__secondary">
-					<img :src="inventory.weapons.secondary.img" alt="@weapImg" class="weapon__img">
-					Secondary
+				<li class="weapons__secondary" v-if="inventory.weapons.secondary.name">
+
+					<img :src="inventory.weapons.secondary.img"class="weapon__img" :class="{'weapon__img-selected': isSecondary}">
+
+					<span class="weapon__name">{{ inventory.weapons.secondary.name | realName }}</span>
+
 					<div class="secondary__ammo">
-						<span class="ammo-current">{{ inventory.weapons.secondary.ammo }} /</span>
+						<span class="ammo-current" :class="{'red': inventory.weapons.secondary.ammo <= Math.ceil(inventory.weapons.secondary.ammo_max*.175)}">{{ inventory.weapons.secondary.ammo }}</span>
 						<span class="ammo-reserve">{{ inventory.weapons.secondary.ammo_reserve }}</span>
 					</div>
 				</li>
 				<li class="weapons__knife">
-					<img :src="inventory.weapons.knife.img" alt="@weapImg" class="weapon__img">
-					Knife
-					{{ inventory.weapons.knife.name }}
-					{{ inventory.weapons.knife.img }}
+
+					<img :src="inventory.weapons.knife.img" class="weapon__img" :class="{'weapon__img-selected': isKnife}">
+
+					<span class="weapon__name">{{ inventory.weapons.knife.name | realName }}</span>
 				</li>
 			</ul>
 
 			<ul class="grenades">
 				<li class="grenade" v-if="inventory.weapons.he">
-					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-height-down/50" alt="he outline" class="weapon__img">
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-height-down/50" alt="he outline" class="weapon__img" :class="{'weapon__img-selected': isHE}">
 					<div>HE</div>
 				</li>
+
 				<li class="grenade" v-if="inventory.weapons.flashes">
-					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="flash outline" class="weapon__img">
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="flash outline" class="weapon__img" :class="{'weapon__img-selected': isFlash}">
 					<div>Flash x {{ inventory.weapons.flashes }}</div>
 				</li>
+
 				<li class="grenade" v-if="inventory.weapons.smoke">
-					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="smoke outline" class="weapon__img">
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="smoke outline" class="weapon__img" :class="{'weapon__img-selected': isSmoke}">
 					<div>Smoke</div>
 				</li>
-				<li class="grenade" v-if="inventory.weapons.molly">
-					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="molotov outline" class="weapon__img">
-					<div>Molly</div>
-				</li>
-				<li class="grenade" v-if="inventory.weapons.incgrenade">
-					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="incendiary" class="weapon__img">
-					<div>Incendiary</div>
-				</li>
+
 				<li class="grenade" v-if="inventory.weapons.decoy">
-					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/7/78/Decoy_hud.png/revision/latest/scale-to-height-down/50" alt="decoy" class="weapon__img">
+					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/7/78/Decoy_hud.png/revision/latest/scale-to-height-down/50" alt="decoy" class="weapon__img" :class="{'weapon__img-selected': isDecoy}">
 					<div>Decoy</div>
 				</li>
+
+				<li class="grenade" v-if="inventory.weapons.molly">
+					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="molotov outline" class="weapon__img" :class="{'weapon__img-selected': isMolly}">
+					<div>Molly</div>
+				</li>
+
+				<li class="grenade" v-if="inventory.weapons.incgrenade">
+					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="incendiary" class="weapon__img" :class="{'weapon__img-selected': isInc}">
+					<div>Incendiary</div>
+				</li>
+
 			</ul>
+			<div class="bomb" v-if="inventory.bomb">
+				C4
+				<img src="http://vignette1.wikia.nocookie.net/cswikia/images/f/fc/C4_ticking_source.png/revision/latest/scale-to-height-down/100" alt="bomb_csgo" :class="{'weapon__img-selected': isC4}">
+			</div>
 		</section>
 		<pre>{{ inventory | json }}</pre>
 		<pre>{{ player | json }}</pre>
+
 	</main>
 
 

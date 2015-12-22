@@ -16,6 +16,10 @@ h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 1em;
 }
 
+pre {
+	word-wrap: break-word;
+}
+
 header {
 	background-color: #3F51B5;
 	padding: 2rem;
@@ -30,6 +34,8 @@ header h1 {
 main {
 	display: flex;
 	flex-direction: column;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 main section {
@@ -60,6 +66,35 @@ img {
 }
 
 .weapon__img-selected {
-	background-color: #18FFFF;
+	background-color: white;
+	filter: invert(100%);
+	-webkit-filter: invert(100%);
 }
 .weapon__img {}
+
+.weapons {
+	list-style-type: none;
+}
+
+.weapons > li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ammo-current {
+	font-size: 2rem;	
+}
+.ammo-current::after {
+	content: ' /';
+	font-size: 1.25rem;
+	color: #000;
+}
+
+#state {
+	order: 1;
+}
+
+.red {
+	color: red;
+}

@@ -16,7 +16,7 @@ server.listen(socketPort);
 app.use(express.static('static'));
 
 var parse = require("./parse.js");
-var interp = require("./interp.js");
+var bombTimer = require("./bombTimer.js");
  
 var port = 6376;
 var webPort = 6377;
@@ -42,10 +42,12 @@ postServer = http.createServer( function(req, res) {
 				parse.logJSON(body);
 			}
 
-			interp.recordRounds(body);
+			bombTimer.detectChange(parse.organizeRound(body));
 
 			io.emit("state", JSON.stringify(parse.organizeState(body)));
 			io.emit("weapons", JSON.stringify(parse.organizeWeapons(body)));
+			io.emit("round", JSON.stringify(parse.organizeRound(body)));
+			
 			res.end( '' );
 		});
 	}
@@ -58,6 +60,10 @@ postServer = http.createServer( function(req, res) {
 	}
  
 });
+
+setInterval(function(){
+	io.emit("bombTimer", (bombTimer.readTimer()));
+}, 1000);
 
 postServer.listen(port, host);
 console.log('game at http://' + host + ':' + port);
