@@ -2,10 +2,10 @@
 
 ## Areas that need work
 
-* A script to install without editing any files manually (copying the nessecary config, putting the correct local ip in client.js)
+* A script to automate installation (copying the nessecary config, putting the correct local ip in client.js)
 * A better way to parse weapons
 * Some testing on the bomb timer
-* Design/Css and animations
+* Design/CSS and animations
 * Installation testing on other platforms
 
 		+----------------+---------+--+
