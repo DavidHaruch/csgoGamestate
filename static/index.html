@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>csgoGameState - WebClient</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="socket.io.js"></script>
@@ -53,8 +54,9 @@
 			<!-- <h2>Weapons</h2> -->
 			
 			<ul class="weapons">
-				<li class="weapons__primary" v-if="inventory.weapons.primary.name">
-					<img :src="inventory.weapons.primary.img" class="weapon__img" :class="{'weapon__img-selected': isPrimary}">
+
+				<li class="weapons__primary weapon"  :class="{'weapon-selected': isPrimary}" v-if="inventory.weapons.primary.name">
+					<img :src="inventory.weapons.primary.img" class="weapon__img">
 
 					<span class="weapon__name">{{ inventory.weapons.primary.name | realName }}</span>
 
@@ -63,9 +65,10 @@
 						<span class="ammo-reserve">{{ inventory.weapons.primary.ammo_reserve }}</span>
 					</div>
 				</li>
-				<li class="weapons__secondary" v-if="inventory.weapons.secondary.name">
 
-					<img :src="inventory.weapons.secondary.img"class="weapon__img" :class="{'weapon__img-selected': isSecondary}">
+				<li class="weapons__secondary weapon" v-if="inventory.weapons.secondary.name" :class="{'weapon-selected': isSecondary}">
+
+					<img :src="inventory.weapons.secondary.img" class="weapon__img" >
 
 					<span class="weapon__name">{{ inventory.weapons.secondary.name | realName }}</span>
 
@@ -74,9 +77,10 @@
 						<span class="ammo-reserve">{{ inventory.weapons.secondary.ammo_reserve }}</span>
 					</div>
 				</li>
-				<li class="weapons__knife">
 
-					<img :src="inventory.weapons.knife.img" class="weapon__img" :class="{'weapon__img-selected': isKnife}">
+				<li class="weapons__knife weapon" :class="{'weapon-selected': isKnife}">
+
+					<img :src="inventory.weapons.knife.img" class="weapon__img">
 
 					<span class="weapon__name">{{ inventory.weapons.knife.name | realName }}</span>
 				</li>
@@ -84,57 +88,49 @@
 
 			<ul class="grenades">
 				<li class="grenade" v-if="inventory.weapons.he">
-					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/6/60/Ammo_hegrenade_css.png/revision/latest/scale-to-height-down/50" alt="he outline" class="weapon__img" :class="{'weapon__img-selected': isHE}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_hegrenade.7b344756d5dbdda4fd2e583a227a670599889f59.png" alt="he outline" class="weapon__img" :class="{'weapon-selected': isHE}">
 					<div>HE</div>
 				</li>
 
 				<li class="grenade" v-if="inventory.weapons.flashes">
-					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/a/af/Flashbang_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="flash outline" class="weapon__img" :class="{'weapon__img-selected': isFlash}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_flashbang.bbde1307eeb99d78ef67c3a87a3a713023b63af2.png" alt="flash outline" class="weapon__img" :class="{'weapon-selected': isFlash}">
 					<div>Flash x {{ inventory.weapons.flashes }}</div>
 				</li>
 
 				<li class="grenade" v-if="inventory.weapons.smoke">
-					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/4/48/Smokegrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="smoke outline" class="weapon__img" :class="{'weapon__img-selected': isSmoke}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_smokegrenade.8746d3fec5a1041d61412295aee74c7d873ccacb.png" alt="smoke outline" class="weapon__img" :class="{'weapon-selected': isSmoke}">
 					<div>Smoke</div>
 				</li>
 
 				<li class="grenade" v-if="inventory.weapons.decoy">
-					<img src="http://vignette1.wikia.nocookie.net/cswikia/images/7/78/Decoy_hud.png/revision/latest/scale-to-height-down/50" alt="decoy" class="weapon__img" :class="{'weapon__img-selected': isDecoy}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_decoy.d09e626c3d81f1f262bbca6146407f279a24dd03.png" alt="decoy" class="weapon__img" :class="{'weapon-selected': isDecoy}">
 					<div>Decoy</div>
 				</li>
 
 				<li class="grenade" v-if="inventory.weapons.molly">
-					<img src="http://vignette3.wikia.nocookie.net/cswikia/images/f/fc/Molotov_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="molotov outline" class="weapon__img" :class="{'weapon__img-selected': isMolly}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_molotov.d700f0165e02bd9f2cb6bdb63bb76b4cac450b76.png" alt="molotov outline" class="weapon__img" :class="{'weapon-selected': isMolly}">
 					<div>Molly</div>
 				</li>
 
 				<li class="grenade" v-if="inventory.weapons.incgrenade">
-					<img src="http://vignette2.wikia.nocookie.net/cswikia/images/4/45/Incgrenade_hud_csgo.png/revision/latest/scale-to-height-down/50" alt="incendiary" class="weapon__img" :class="{'weapon__img-selected': isInc}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_incgrenade.94d31f4f1af7d2e695f403d9a55f2cd64f3459b2.png" alt="incendiary" class="weapon__img" :class="{'weapon-selected': isInc}">
 					<div>Incendiary</div>
 				</li>
 
 			</ul>
 			<div class="bomb" v-if="inventory.bomb">
 				C4
-				<img src="http://vignette1.wikia.nocookie.net/cswikia/images/f/fc/C4_ticking_source.png/revision/latest/scale-to-height-down/100" alt="bomb_csgo" :class="{'weapon__img-selected': isC4}">
+				<img src="http://vignette1.wikia.nocookie.net/cswikia/images/f/fc/C4_ticking_source.png/revision/latest/scale-to-height-down/100" alt="bomb_csgo" :class="{'weapon-selected': isC4}">
 			</div>
 		</section>
-		<pre>{{ inventory | json }}</pre>
-		<pre>{{ player | json }}</pre>
+
+		<pre>
+			{{ inventory | json }}
+		</pre>
 
 	</main>
 
-
-
 	<script src="client.js"></script>
-	<script>
-		var sleepPreventInterval = setInterval(function() {
-    		window.location.href = "/";
-    		window.setTimeout(function() {
-      			window.stop();
-    		}, 0);
-  		}, 30000);
-	</script>
 </body>
 
 </html>

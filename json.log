@@ -4,18 +4,18 @@
 		"appid": 730,
 		"version": 13516,
 		"steamid": "76561198009199490",
-		"timestamp": 1450737568
+		"timestamp": 1450811950
 	},
 	"map": {
 		"mode": "competitive",
-		"name": "de_cache",
+		"name": "de_inferno",
 		"phase": "live",
-		"round": 2,
+		"round": 0,
 		"team_ct": {
 			"score": 0
 		},
 		"team_t": {
-			"score": 2
+			"score": 0
 		}
 	},
 	"round": {
@@ -28,12 +28,12 @@
 		"activity": "playing",
 		"state": {
 			"health": 100,
-			"armor": 97,
+			"armor": 100,
 			"helmet": true,
 			"flashed": 0,
 			"smoked": 0,
 			"burning": 0,
-			"money": 49000,
+			"money": 54200,
 			"round_kills": 0,
 			"round_killhs": 0
 		},
@@ -45,27 +45,25 @@
 				"state": "holstered"
 			},
 			"weapon_1": {
-				"name": "weapon_glock",
-				"paintkit": "gs_glock18_wrathys",
+				"name": "weapon_p250",
+				"paintkit": "cu_bittersweet",
 				"type": "Pistol",
-				"ammo_clip": 20,
-				"ammo_clip_max": 20,
-				"ammo_reserve": 120,
+				"ammo_clip": 13,
+				"ammo_clip_max": 13,
+				"ammo_reserve": 26,
 				"state": "holstered"
 			},
 			"weapon_2": {
 				"name": "weapon_c4",
 				"paintkit": "default",
 				"type": "C4",
-				"state": "active"
+				"state": "holstered"
 			},
 			"weapon_3": {
-				"name": "weapon_awp",
-				"paintkit": "cu_awp_asimov",
-				"type": "SniperRifle",
-				"ammo_clip": 10,
-				"ammo_clip_max": 10,
-				"ammo_reserve": 30,
+				"name": "weapon_hegrenade",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
 				"state": "holstered"
 			},
 			"weapon_4": {
@@ -76,18 +74,20 @@
 				"state": "holstered"
 			},
 			"weapon_5": {
-				"name": "weapon_hegrenade",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
-				"state": "holstered"
-			},
-			"weapon_6": {
 				"name": "weapon_flashbang",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 2,
 				"state": "holstered"
+			},
+			"weapon_6": {
+				"name": "weapon_bizon",
+				"paintkit": "default",
+				"type": "Submachine Gun",
+				"ammo_clip": 64,
+				"ammo_clip_max": 64,
+				"ammo_reserve": 120,
+				"state": "active"
 			},
 			"weapon_7": {
 				"name": "weapon_molotov",
@@ -101,64 +101,19 @@
 			"kills": 0,
 			"assists": 0,
 			"deaths": 0,
-			"mvps": 2,
-			"score": 8
+			"mvps": 0,
+			"score": 0
 		}
 	},
 	"previously": {
-		"round": {
-			"phase": "over",
-			"win_team": "T",
-			"bomb": "exploded"
-		},
 		"player": {
-			"state": {
-				"health": 95
-			},
 			"weapons": {
-				"weapon_0": {
+				"weapon_1": {
 					"state": "active"
 				},
-				"weapon_1": {
-					"ammo_clip": 8
-				},
-				"weapon_2": {
-					"name": "weapon_awp",
-					"paintkit": "cu_awp_asimov",
-					"type": "SniperRifle",
-					"ammo_clip": 9,
-					"ammo_clip_max": 10,
-					"ammo_reserve": 30,
-					"state": "holstered"
-				},
-				"weapon_3": {
-					"name": "weapon_smokegrenade",
-					"paintkit": "default",
-					"type": "Grenade",
-					"ammo_reserve": 1
-				},
-				"weapon_4": {
-					"name": "weapon_hegrenade"
-				},
-				"weapon_5": {
-					"name": "weapon_flashbang",
-					"ammo_reserve": 2
-				},
 				"weapon_6": {
-					"name": "weapon_molotov",
-					"ammo_reserve": 1
+					"state": "holstered"
 				}
-			}
-		}
-	},
-	"added": {
-		"player": {
-			"weapons": {
-				"weapon_3": {
-					"ammo_clip": true,
-					"ammo_clip_max": true
-				},
-				"weapon_7": true
 			}
 		}
 	}

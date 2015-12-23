@@ -11,6 +11,9 @@ var timerID;
 
 module.exports = {
 	detectChange: function (json) {
+
+		if (json) {
+
 		// console.log(json);
 		if (json.bomb == "planted" && bombPlanted === false) {
 			// console.log("BOMB HAS BEEN PLANTED");
@@ -23,6 +26,8 @@ module.exports = {
 			this.stopTimer();
 			bombTime = mp_c4timer;
 			return false;
+		}
+
 		}
 	},
 	stopTimer: function () {

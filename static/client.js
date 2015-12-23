@@ -73,7 +73,7 @@ var vm = new Vue({
 	},
 	methods: {
 		flashedKills: function () {
-			
+
 		},
 	},
 });
