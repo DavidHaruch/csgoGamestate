@@ -1,8 +1,8 @@
-var socket = io("http://192.168.1.9:6378");
-// ip needs to be the local ip of the computer you are playing csgo on
-// to find this type ifconfig or ipconfig in terminal or command prompt respectively
-// look under the Ethernet adapter and IPv4 Adress
-// An example would be 192.168.1.2
+var socket = io("http://SCRIPTMARKERIP:6378");
+/*
+	if you see SCRIPTMARKERIP please run /Install/configureip.js
+	otherwise, change the IP as you see fit
+*/
 
 var vm = new Vue({
 	el: '#main',
