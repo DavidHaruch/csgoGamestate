@@ -16,6 +16,9 @@
 	</header>
 	
 	<main id="main">
+		<div class="flashKill" v-show="flashKill">
+			KILL WHILE FLASHED
+		</div>
 		<section id="bombTimer" v-if="bombTimer">
 			<div class="bomb__text">Bomb Timer</div>
 			<div class="bomb__time" :class="{'red': bombTimer <= 10}">{{ bombTimer }}</div>
@@ -126,6 +129,9 @@
 
 		<pre>
 			{{ inventory | json }}
+		</pre>
+		<pre>
+			{{ player | json }}
 		</pre>
 
 	</main>

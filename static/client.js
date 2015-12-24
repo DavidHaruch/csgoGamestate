@@ -1,4 +1,4 @@
-var socket = io("http://SCRIPTMARKERIP:6378");
+var socket = io("http://192.168.1.9:6378");
 /*
 	if you see SCRIPTMARKERIP please run /Install/configureip.js
 	otherwise, change the IP as you see fit
@@ -10,6 +10,7 @@ var vm = new Vue({
 		inventory: "",
 		player: "",
 		bombTimer: 0,
+		flashKill: false,
 	},
 	init: function() {
 		socket.on("weapons",function (response) {
@@ -26,6 +27,10 @@ var vm = new Vue({
 		});
 		socket.on("round",function (response) {
 			// console.log(response);
+		});
+		socket.on("flashKill",function (response) {
+			console.log(response);
+			vm.$data.flashKill = response;
 		});
 	},
 	computed: {

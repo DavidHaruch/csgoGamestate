@@ -2,29 +2,27 @@
 
 ## Areas that need work
 
-* A script to automate installation (copying the nessecary config, putting the correct local ip in client.js)
-* A better way to parse weapons
-* Some testing on the bomb timer
-* Design/CSS and animations
-* Installation testing on other platforms
+- [x] A script to automate installation (copying the nessecary config, putting the correct local ip in client.js)
+- [ ] A better way to parse weapons
+- [ ] Some testing on the bomb timer
+- [ ] Design/CSS and animations
+- [ ] Installation testing on other platforms
 
-		+----------------+---------+--+
-		|    Platform    | Status  |  |
-		+----------------+---------+--+
-		| W-XP           | Unknown |  |
-		| W-Vista        | Unknown |  |
-		| W-7            | Unknown |  |
-		| W-8.1          | Works   |  |
-		| W-10           | Unknown |  |
-		| Ubuntu 15.10   | Works   |  |
-		| Ubuntu 14.04   | Unknown |  |
-		| Debian         | Unknown |  |
-		| Fedora         | Unknown |  |
-		| Mac El Capitan | Unknown |  |
-		| Mac Yosemite   | Unknown |  |
-		+----------------+---------+--+
+    Platform    | Status  
+:---------------|--------:
+ W-XP           | Unknown 
+ W-Vista        | Unknown 
+ W-7            | Unknown 
+ W-8.1          | Works  
+ W-10           | Unknown
+ Ubuntu 15.10   | Works   
+ Ubuntu 14.04   | Unknown 
+ Debian         | Unknown 
+ Fedora         | Unknown 
+ Mac El Capitan | Unknown 
+ Mac Yosemite   | Unknown
 
-* Mobile testing
+- [ ] Mobile testing
 
 # Installing
 
@@ -89,6 +87,10 @@ This works best if it is a desktop with a wired connection, wifi may be unreliab
 
 * Run ```configureip.js``` in the Install directory
 
+Use this ip in place of localhost when connecting from other computers/phones.
+
+**Only do this on the game computer!**
+
 ## Use It!
 
 First, start the server.
@@ -98,7 +100,7 @@ First, start the server.
 
 You can now point any browser to <http://localhost:6377> and use it.
 
-If you want to use it from another computer, go to [http://{game-computer's-local-ip}:6377](http://{game-computer's-local-ip}:6377), where the local ip is the same one found under <#Configure-network-specific-settings>.
+If you want to use it from another computer/smartphone, go to [http://{game-computer's-local-ip}:6377](http://{game-computer's-local-ip}:6377), where the local ip is the same one found from ```configureip.js``` on the game computer.
 
 ### Warning
 
