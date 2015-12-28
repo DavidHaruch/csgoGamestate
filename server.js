@@ -1,5 +1,6 @@
 var http = require('http');
 var fs = require('fs');
+var os = require('os');
 
 var yargs = require('yargs').argv;
 
@@ -70,6 +71,16 @@ setInterval(function(){
 
 postServer.listen(port, host);
 console.log('game at http://' + host + ':' + port);
+
+// this will also do the work for you without the need for command line
+// if I can finsih this, the user will only need the install script and a browser
+app.get("/ip",function(req,res){
+	var netint = JSON.parse(JSON.stringify(os.networkInterfaces()));
+
+	console.log(netint.Ethernet);
+	// for ()
+	res.json({"ip": netint});
+});
 
 var webServer = app.listen(webPort, function () {
   var host = webServer.address().address;

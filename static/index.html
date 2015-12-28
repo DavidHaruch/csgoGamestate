@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>csgoGameState - WebClient</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 	<script src="socket.io.js"></script>
 	<script src="vue.js"></script>
@@ -23,39 +25,8 @@
 			<div class="bomb__text">Bomb Timer</div>
 			<div class="bomb__time" :class="{'red': bombTimer <= 10}">{{ bombTimer }}</div>
 		</section>
-		<section id="state">
-			<!-- <h2>State</h2> -->
-			<ul class="state">
-				<li>
-					Health
-					<meter value="{{ player.health }}" max="100" min="0" low="25"> {{ player.health }}</meter>
-				</li>
-				<li>
-					Armor
-					<meter value="{{ player.armor }}" max="100" min="0"> {{ player.armor }}</meter>
-				</li>
-				<li>Helmet {{ player.helmet }}</li>
-				<li>
-					Flashed
-					<meter value="{{ player.flashed }}" max="100" min="0">{{ player.flashed }}</meter>
-				</li>
-				<li>
-					Smoked 
-					<meter value="{{ player.smoked }}" max="100" min="0">{{ player.smoked }}</meter>
-				</li>
-				<li>
-					Burning 
-					<meter value="{{ player.burning }}" max="100" min="0">{{ player.burning }}</meter>
-				</li>
-				<li>Money ${{ player.money }}</li>
-				<li>Kills {{ player.kills }}</li>
-				<li>Headshots {{ player.headshots }}</li>
-			</ul>
-		</section>
 
 		<section id="weapons" v-if="inventory">
-			<!-- <h2>Weapons</h2> -->
-			
 			<ul class="weapons">
 
 				<li class="weapons__primary weapon"  :class="{'weapon-selected': isPrimary}" v-if="inventory.weapons.primary.name">
@@ -90,33 +61,33 @@
 			</ul>
 
 			<ul class="grenades">
-				<li class="grenade" v-if="inventory.weapons.he">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_hegrenade.7b344756d5dbdda4fd2e583a227a670599889f59.png" alt="he outline" class="weapon__img" :class="{'weapon-selected': isHE}">
+				<li class="grenade" v-if="inventory.weapons.he" :class="{'weapon-selected': isHE}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_hegrenade.7b344756d5dbdda4fd2e583a227a670599889f59.png" alt="he outline" class="weapon__img">
 					<div>HE</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.flashes">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_flashbang.bbde1307eeb99d78ef67c3a87a3a713023b63af2.png" alt="flash outline" class="weapon__img" :class="{'weapon-selected': isFlash}">
+				<li class="grenade" v-if="inventory.weapons.flashes" :class="{'weapon-selected': isFlash}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_flashbang.bbde1307eeb99d78ef67c3a87a3a713023b63af2.png" alt="flash outline" class="weapon__img">
 					<div>Flash x {{ inventory.weapons.flashes }}</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.smoke">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_smokegrenade.8746d3fec5a1041d61412295aee74c7d873ccacb.png" alt="smoke outline" class="weapon__img" :class="{'weapon-selected': isSmoke}">
+				<li class="grenade" v-if="inventory.weapons.smoke" :class="{'weapon-selected': isSmoke}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_smokegrenade.8746d3fec5a1041d61412295aee74c7d873ccacb.png" alt="smoke outline" class="weapon__img">
 					<div>Smoke</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.decoy">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_decoy.d09e626c3d81f1f262bbca6146407f279a24dd03.png" alt="decoy" class="weapon__img" :class="{'weapon-selected': isDecoy}">
+				<li class="grenade" v-if="inventory.weapons.decoy" :class="{'weapon-selected': isDecoy}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_decoy.d09e626c3d81f1f262bbca6146407f279a24dd03.png" alt="decoy" class="weapon__img">
 					<div>Decoy</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.molly">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_molotov.d700f0165e02bd9f2cb6bdb63bb76b4cac450b76.png" alt="molotov outline" class="weapon__img" :class="{'weapon-selected': isMolly}">
+				<li class="grenade" v-if="inventory.weapons.molly" :class="{'weapon-selected': isMolly}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_molotov.d700f0165e02bd9f2cb6bdb63bb76b4cac450b76.png" alt="molotov outline" class="weapon__img">
 					<div>Molly</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.incgrenade">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_incgrenade.94d31f4f1af7d2e695f403d9a55f2cd64f3459b2.png" alt="incendiary" class="weapon__img" :class="{'weapon-selected': isInc}">
+				<li class="grenade" v-if="inventory.weapons.incgrenade" :class="{'weapon-selected': isInc}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_incgrenade.94d31f4f1af7d2e695f403d9a55f2cd64f3459b2.png" alt="incendiary" class="weapon__img">
 					<div>Incendiary</div>
 				</li>
 
@@ -126,13 +97,52 @@
 				<img src="http://vignette1.wikia.nocookie.net/cswikia/images/f/fc/C4_ticking_source.png/revision/latest/scale-to-height-down/100" alt="bomb_csgo" :class="{'weapon-selected': isC4}">
 			</div>
 		</section>
+		<section id="state">
+			<ul class="health-armor">
+				<li class="health">
+					<span class="health__text">
+						<i class="material-icons">add</i>
+					</span>
+					<span class="health__number">{{ player.health }}</span>
+				</li>
+				<li class="armor">
+					<span class="armor__text" :title="'helmet=' + player.helmet">
+						<i class="material-icons" v-if="player.helmet">person</i>
+						<i class="material-icons" v-else>person_outline</i>
+					</span>
+					<span class="armor__number">{{ player.armor }}</span>
+				</li>
+			</ul>
+			<ul class="state">
+				<li>
+					Flashed
+					<meter value="{{ player.flashed }}" max="100" min="0">{{ player.flashed }}</meter>
+				</li>
+				<li>
+					Smoked 
+					<meter value="{{ player.smoked }}" max="100" min="0">{{ player.smoked }}</meter>
+				</li>
+				<li>
+					Burning 
+					<meter value="{{ player.burning }}" max="100" min="0">{{ player.burning }}</meter>
+				</li>
+				<li>Money ${{ player.money }}</li>
+				<li>Kills {{ player.kills }}</li>
+				<li>Headshots {{ player.headshots }}</li>
+			</ul>
+		</section>
 
-		<pre>
+		<!-- <pre>
 			{{ inventory | json }}
 		</pre>
 		<pre>
 			{{ player | json }}
 		</pre>
+ -->
+
+	<div class="snackbar" transition="snackbar" v-show="flashKill">
+		{{ flashKill }}
+	</div>
 
 	</main>
 

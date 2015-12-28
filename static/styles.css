@@ -1,122 +1,122 @@
 /* indigo 500 #3F51B5 */
 /* cyan accent 200 #18FFFF */
-
 body {
-	margin: 0;
-	font-family: 'Open Sans','Helvetica', sans-serif;
-	background-color: #eee;
-}
+  margin: 0;
+  font-family: 'Open Sans','Helvetica', sans-serif;
+  background-color: #eee; }
 
 * {
-	box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
-h1,h2,h3,h4,h5,h6 {
-	margin: 0;
-	margin-bottom: 1em;
-}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  margin-bottom: 1em; }
 
 pre {
-	word-wrap: break-word;
-}
+  word-wrap: break-word; }
 
 header {
-	background-color: #3F51B5;
-	padding: 2rem;
-	color: #fff;
-	border-bottom: 1rem solid #18FFFF;
-}
+  background-color: #3F51B5;
+  padding: 2rem;
+  color: #fff;
+  border-bottom: 1rem solid #18FFFF; }
 
 header h1 {
-	margin: 0;
-}
+  margin: 0; }
 
 main {
-	display: flex;
-	flex-direction: column;
-	max-width: 800px;
-	margin: 0 auto;
-}
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto; }
 
 main section {
-	flex-direction: column;
-	align-items: center;
-	display: flex;
-	padding: 2rem;
-}
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  padding: 2rem; }
 
 ul {
-	padding: 0;
-	margin: 0;
-	margin-bottom: 1em;
-	list-style: circle inside;
-}
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1em;
+  list-style: circle inside; }
 
 .grenade {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-}
-.grenade:not(:last-of-type) {
-	padding-right: 1rem;
-}
-.grenade img {
-	height: 50px;
-}
-.grenade div {
-	font-size: 0.75rem;
-}
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem; }
 
+.grenade:not(:last-of-type) {
+  margin-right: 1rem; }
+
+.grenade img {
+  height: 50px; }
+
+.grenade div {
+  font-size: 0.75rem; }
 
 .weapon-selected {
-	background-color: rgba(0,0,0,0.4);
-}
-.weapon__img {
-	height: 100px;
-}
+  background-color: rgba(0, 0, 0, 0.4); }
 
-.weapon {
-	padding: 1rem;
-}
+.weapon__img {
+  height: 100px; }
 
 .weapons {
-	list-style-type: none;
-}
+  list-style-type: none;
+  display: flex; }
 
 .weapons > li {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .weapon__name {
-	font-weight: bold;
-	font-size: 1.5rem;
-}
+  font-weight: bold;
+  font-size: 1.5rem; }
 
 .ammo-current {
-	font-size: 2rem;	
-}
-.ammo-current::after {
-	content: ' /';
-	font-size: 1.25rem;
-	color: #000;
-}
+  font-size: 2rem; }
 
-#state {
-	order: 1;
-}
+.ammo-current::after {
+  content: ' /';
+  font-size: 1.25rem;
+  color: #000; }
 
 .red {
-	color: red;
-}
+  color: red; }
 
 #bombTimer {
-	text-align: center;
-}
+  text-align: center; }
 
 .bomb__time {
-	font-size: 6em;
-	line-height: 1;
-	font-weight: bold;
-}
+  font-size: 6em;
+  line-height: 1;
+  font-weight: bold; }
+
+.health-armor {
+  list-style-type: none;
+  display: flex; }
+
+.weapon {
+  padding: 1rem; }
+  .weapon:not(:last-of-type) {
+    margin-right: 1rem; }
+
+.snackbar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: #555;
+  color: #fff; }
+
+.snackbar-transition {
+  transition: all 400ms ease;
+  opacity: 1;
+  display: flex; }
+
+.snackbar-enter, .snackbar-leave {
+  opacity: 0; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -29,7 +29,6 @@ var vm = new Vue({
 			// console.log(response);
 		});
 		socket.on("flashKill",function (response) {
-			console.log(response);
 			vm.$data.flashKill = response;
 		});
 	},

@@ -1,0 +1,31 @@
+$p: #3F51B5
+$a: #18FFFF
+
+@import 'vanilla.scss'
+
+.health-armor
+	list-style-type: none
+	display: flex
+
+.weapon
+	padding: 1rem
+	&:not(:last-of-type)
+		margin-right: 1rem
+
+.snackbar
+	display: flex
+	position: fixed
+	bottom: 0
+	background-color: #555
+	color: #fff
+
+// vuejs transitions for snackbar
+
+.snackbar-transition
+	transition: all 400ms ease
+	opacity: 1
+	display: flex
+
+
+.snackbar-enter,.snackbar-leave
+	opacity: 0
