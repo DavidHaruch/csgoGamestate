@@ -2,7 +2,7 @@
 /* cyan accent 200 #18FFFF */
 body {
   margin: 0;
-  font-family: 'Open Sans','Helvetica', sans-serif;
+  font-family: 'Roboto','Helvetica', sans-serif;
   background-color: #eee; }
 
 * {
@@ -15,15 +15,6 @@ h1, h2, h3, h4, h5, h6 {
 pre {
   word-wrap: break-word; }
 
-header {
-  background-color: #3F51B5;
-  padding: 2rem;
-  color: #fff;
-  border-bottom: 1rem solid #18FFFF; }
-
-header h1 {
-  margin: 0; }
-
 main {
   display: flex;
   flex-direction: column;
@@ -33,8 +24,7 @@ main {
 main section {
   flex-direction: column;
   align-items: center;
-  display: flex;
-  padding: 2rem; }
+  display: flex; }
 
 ul {
   padding: 0;
@@ -95,6 +85,51 @@ ul {
   line-height: 1;
   font-weight: bold; }
 
+#map {
+  display: flex; }
+
+.rounds {
+  display: flex;
+  align-items: center; }
+
+.round {
+  order: 1;
+  font-size: 32px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700; }
+  .round::before {
+    content: "round";
+    font-size: 12px;
+    display: block;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 500; }
+
+.score {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center; }
+  .score::before {
+    content: "";
+    height: 32px;
+    width: 32px;
+    display: block;
+    background-size: contain; }
+
+.score-ct {
+  order: 0;
+  color: blue; }
+  .score-ct::before {
+    background-image: url("/img/ct.png"); }
+
+.score-t {
+  order: 2;
+  color: orange; }
+  .score-t::before {
+    background-image: url("/img/t.png"); }
+
 .health-armor {
   list-style-type: none;
   display: flex; }
@@ -104,19 +139,41 @@ ul {
   .weapon:not(:last-of-type) {
     margin-right: 1rem; }
 
+.bomb, .zeus {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem; }
+  .bomb img, .zeus img {
+    height: 50px; }
+
 .snackbar {
   display: flex;
   position: fixed;
+  margin: 0 auto;
+  padding: 0 24px;
+  max-width: 550px;
+  min-width: 300px;
+  height: 48px;
+  line-height: 48px;
   bottom: 0;
-  background-color: #555;
+  left: 0;
+  right: 0;
+  background-color: #323232;
   color: #fff; }
+  @media (max-width: 600px) {
+    .snackbar {
+      max-width: 100vw;
+      min-width: 100vw; } }
 
 .snackbar-transition {
-  transition: all 400ms ease;
-  opacity: 1;
-  display: flex; }
+  transition: transform 400ms ease, color 200ms ease;
+  display: flex;
+  color: #fff;
+  transform: translateY(0px); }
 
 .snackbar-enter, .snackbar-leave {
-  opacity: 0; }
+  transform: translateY(48px);
+  color: #323232; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -13,14 +13,16 @@
 </head>
 
 <body id="body">
-	<header>
-		<h1>csgoGameState</h1>
-	</header>
 	
 	<main id="main">
-		<div class="flashKill" v-show="flashKill">
-			KILL WHILE FLASHED
-		</div>
+		<section id="map">
+			<div class="name">{{ map.name }}</div>
+			<div class="rounds">
+				<div class="round">{{ map.round }}</div>
+				<div class="score score-t">{{ map.team_t_score }}</div>
+				<div class="score score-ct">{{ map.team_ct_score }}</div>
+			</div>
+		</section>
 		<section id="bombTimer" v-if="bombTimer">
 			<div class="bomb__text">Bomb Timer</div>
 			<div class="bomb__time" :class="{'red': bombTimer <= 10}">{{ bombTimer }}</div>
@@ -92,10 +94,17 @@
 				</li>
 
 			</ul>
-			<div class="bomb" v-if="inventory.bomb">
-				C4
-				<img src="http://vignette1.wikia.nocookie.net/cswikia/images/f/fc/C4_ticking_source.png/revision/latest/scale-to-height-down/100" alt="bomb_csgo" :class="{'weapon-selected': isC4}">
-			</div>
+			<ul class="others">
+				<!-- others are c4 and zeus -->
+				<li class="bomb" v-if="inventory.bomb" :class="{'weapon-selected': isC4}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_c4.98f6ef853be4a712c684562b2460dd3e3ace8f64.png" class="weapon__img"  alt="bomb_csgo" >
+					<div class="bomb__name">C4</div>
+				</li>
+				<li class="zeus" v-if="inventory.weapons.zeus" :class="{'weapon-selected': isZeus}">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_taser.3c80d155bf0547c377217920f2c7329c8b00d472.png" alt="taser" class="weapon__img">
+					<div class="zeus__name">Zeus</div>
+				</li>
+			</ul>
 		</section>
 		<section id="state">
 			<ul class="health-armor">
@@ -132,19 +141,11 @@
 			</ul>
 		</section>
 
-		<!-- <pre>
-			{{ inventory | json }}
-		</pre>
-		<pre>
-			{{ player | json }}
-		</pre>
- -->
-
-	<div class="snackbar" transition="snackbar" v-show="flashKill">
-		{{ flashKill }}
-	</div>
 
 	</main>
+	<div class="snackbar" transition="snackbar" v-show="notification">
+		{{ snackbarText }}
+	</div>
 
 	<script src="client.js"></script>
 </body>

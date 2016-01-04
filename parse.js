@@ -62,6 +62,9 @@ var imgUrl = {
 	weapon_knife_shadow_dagger: "http://vignette4.wikia.nocookie.net/cswikia/images/f/f1/Knife_push_hud_outline_csgo.png/revision/latest/scale-to-height-down/100"
 };
 
+// I should be getting all this data from items_game_cdn.txt in the game files,
+// so it will update when the game adds new skins
+
 var skinUrl = {
 	"weapon_ak47_am_bamboo_jungle": "http://media.steampowered.com/apps/730/icons/econ/default_generated/weapon_ak47_am_bamboo_jungle_light_large.98cd023e9d2207ad765b600b281352cbc5009051.png",
 	"weapon_ak47_aq_ak47_cartel": "http://media.steampowered.com/apps/730/icons/econ/default_generated/weapon_ak47_aq_ak47_cartel_light_large.2e7be9f4c7bda304f2a7c374260d95affca93f0b.png",
@@ -1067,6 +1070,23 @@ module.exports = {
 		var csgoRound = csgoJson.round;
 		return csgoRound;
 	},	
+	organizeMap: function (json) {
+		var csgoJson = JSON.parse(json);
+		if (csgoJson) {
+			var csgoMap  = csgoJson.map;
 
+			var newMap = {
+				mode: csgoMap.mode,
+				name: csgoMap.name,
+				phase: csgoMap.phase,
+				round: csgoMap.round,
+				team_ct_score: csgoMap.team_ct.score,
+				team_t_score: csgoMap.team_t.score
+			};
+		
+			return newMap;
+		}
+
+	}
 	// stats need to organizing
 };

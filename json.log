@@ -4,18 +4,18 @@
 		"appid": 730,
 		"version": 13516,
 		"steamid": "76561198009199490",
-		"timestamp": 1450811950
+		"timestamp": 1451510595
 	},
 	"map": {
 		"mode": "competitive",
-		"name": "de_inferno",
+		"name": "de_mirage",
 		"phase": "live",
-		"round": 0,
+		"round": 1,
 		"team_ct": {
 			"score": 0
 		},
 		"team_t": {
-			"score": 0
+			"score": 1
 		}
 	},
 	"round": {
@@ -33,7 +33,7 @@
 			"flashed": 0,
 			"smoked": 0,
 			"burning": 0,
-			"money": 54200,
+			"money": 58300,
 			"round_kills": 0,
 			"round_killhs": 0
 		},
@@ -42,15 +42,15 @@
 				"name": "weapon_knife_m9_bayonet",
 				"paintkit": "aq_steel_knife",
 				"type": "Knife",
-				"state": "holstered"
+				"state": "active"
 			},
 			"weapon_1": {
-				"name": "weapon_p250",
-				"paintkit": "cu_bittersweet",
+				"name": "weapon_glock",
+				"paintkit": "gs_glock18_wrathys",
 				"type": "Pistol",
-				"ammo_clip": 13,
-				"ammo_clip_max": 13,
-				"ammo_reserve": 26,
+				"ammo_clip": 20,
+				"ammo_clip_max": 20,
+				"ammo_reserve": 120,
 				"state": "holstered"
 			},
 			"weapon_2": {
@@ -60,10 +60,12 @@
 				"state": "holstered"
 			},
 			"weapon_3": {
-				"name": "weapon_hegrenade",
-				"paintkit": "default",
-				"type": "Grenade",
-				"ammo_reserve": 1,
+				"name": "weapon_ak47",
+				"paintkit": "cu_ak47_cobra",
+				"type": "Rifle",
+				"ammo_clip": 30,
+				"ammo_clip_max": 30,
+				"ammo_reserve": 90,
 				"state": "holstered"
 			},
 			"weapon_4": {
@@ -74,20 +76,18 @@
 				"state": "holstered"
 			},
 			"weapon_5": {
+				"name": "weapon_hegrenade",
+				"paintkit": "default",
+				"type": "Grenade",
+				"ammo_reserve": 1,
+				"state": "holstered"
+			},
+			"weapon_6": {
 				"name": "weapon_flashbang",
 				"paintkit": "default",
 				"type": "Grenade",
 				"ammo_reserve": 2,
 				"state": "holstered"
-			},
-			"weapon_6": {
-				"name": "weapon_bizon",
-				"paintkit": "default",
-				"type": "Submachine Gun",
-				"ammo_clip": 64,
-				"ammo_clip_max": 64,
-				"ammo_reserve": 120,
-				"state": "active"
 			},
 			"weapon_7": {
 				"name": "weapon_molotov",
@@ -98,23 +98,11 @@
 			}
 		},
 		"match_stats": {
-			"kills": 0,
+			"kills": -1,
 			"assists": 0,
-			"deaths": 0,
-			"mvps": 0,
-			"score": 0
-		}
-	},
-	"previously": {
-		"player": {
-			"weapons": {
-				"weapon_1": {
-					"state": "active"
-				},
-				"weapon_6": {
-					"state": "holstered"
-				}
-			}
+			"deaths": 1,
+			"mvps": 1,
+			"score": 4
 		}
 	}
 }

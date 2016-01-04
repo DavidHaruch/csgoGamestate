@@ -4,13 +4,19 @@ var socket = io("http://192.168.1.9:6378");
 	otherwise, change the IP as you see fit
 */
 
+var notification_length = 3000; // in ms (1s = 1000ms)
+var transition_time = notification_length + 400; // in ms, from line 44 of main.sass
+
 var vm = new Vue({
-	el: '#main',
+	el: '#body',
 	data: {
 		inventory: "",
 		player: "",
 		bombTimer: 0,
+		map: "",
 		flashKill: false,
+		snackbarText: "",
+		notification: false,
 	},
 	init: function() {
 		socket.on("weapons",function (response) {
@@ -29,7 +35,32 @@ var vm = new Vue({
 			// console.log(response);
 		});
 		socket.on("flashKill",function (response) {
-			vm.$data.flashKill = response;
+			console.log(response);
+
+			// this should be put into a function for notifications
+
+			var timeout_active = false;
+			if (response === true) {
+				vm.$data.flashKill = true;
+				vm.$data.notification = true;
+				vm.$data.snackbarText = "Kill while flashed";
+				if (!timeout_active) {
+					timeout_active = true;
+					setTimeout(function () {
+						vm.$data.flashKill = false;
+						vm.$data.notification = false;
+					}, notification_length);
+					setTimeout(function () {
+						vm.$data.snackbarText = "";
+					}, transition_time);
+				}
+			}
+			
+			
+		});
+		socket.on("map", function (response) {
+			var newData = JSON.parse(response);
+			vm.$data.map = newData;
 		});
 	},
 	computed: {
@@ -72,6 +103,10 @@ var vm = new Vue({
 		},
 		isC4: function () {
 			if (this.inventory.currentWeapon == "weapon_c4")
+				return true;
+		},
+		isZeus: function () {
+			if (this.inventory.currentWeapon == "weapon_taser")
 				return true;
 		},
 	},

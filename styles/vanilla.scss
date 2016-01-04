@@ -3,7 +3,7 @@
 
 body {
 	margin: 0;
-	font-family: 'Open Sans','Helvetica', sans-serif;
+	font-family: 'Roboto','Helvetica', sans-serif;
 	background-color: #eee;
 }
 
@@ -20,17 +20,6 @@ pre {
 	word-wrap: break-word;
 }
 
-header {
-	background-color: #3F51B5;
-	padding: 2rem;
-	color: #fff;
-	border-bottom: 1rem solid #18FFFF;
-}
-
-header h1 {
-	margin: 0;
-}
-
 main {
 	display: flex;
 	flex-direction: column;
@@ -42,7 +31,6 @@ main section {
 	flex-direction: column;
 	align-items: center;
 	display: flex;
-	padding: 2rem;
 }
 
 ul {
