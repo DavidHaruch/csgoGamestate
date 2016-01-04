@@ -1,5 +1,7 @@
 # CSGO Gamestate Webapp
 
+[![Build Status](https://travis-ci.org/emphaticpuma/csgoGamestate.svg?branch=master)](https://travis-ci.org/emphaticpuma/csgoGamestate)
+
 ## Areas that need work
 
 - [x] A script to automate installation (copying the nessecary config, putting the correct local ip in client.js)
