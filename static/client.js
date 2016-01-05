@@ -10,10 +10,64 @@ var transition_time = notification_length + 400; // in ms, from line 44 of main.
 var vm = new Vue({
 	el: '#body',
 	data: {
-		inventory: "",
-		player: "",
+		inventory: {
+			weapons: {
+				primary: {
+					name: 'weapon_ak47',
+					ammo: 30,
+					ammo_max: 30,
+					ammo_reserve: 40,
+					img: 'http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_ak47.a320f13fea4f21d1eb3b46678d6b12e97cbd1052.png'
+				},
+				secondary: {
+					name: 'weapon_p250',
+					ammo: 3,
+					ammo_max: 13,
+					ammo_reserve: 40,
+					img: 'http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_p250.0bc9109121fb318a3bb18f6fa92692c7aa433205.png'
+				},
+				knife: {
+					name: 'Karambit',
+					img: 'http://media.steampowered.com/apps/730/icons/econ/default_generated/weapon_knife_karambit_am_doppler_phase1_light_large.16c0819028af598b772826c2bc675712a1d5af37.png',
+				},
+				flashes: 1,
+				he: 1,
+				smoke: 1,
+				molly: 1,
+				incgrenade: 0,
+				decoy: 0,
+				zeus: true,
+			},
+			currentWeapon: {
+				name: 'weapon_ak47',
+					ammo: 30,
+					ammo_max: 30,
+					ammo_reserve: 40,
+					img: 'http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_ak47.a320f13fea4f21d1eb3b46678d6b12e97cbd1052.png'
+			},
+			reloading: false,
+			bomb: true,
+		},
+		player: {
+			health: 90,
+			armor: 50,
+			helmet: true,
+			flashed: 0,
+			smoked: 0,
+			burning: 0,
+			money: 800,
+			kills: 0,
+			headshots: 0,
+		},
 		bombTimer: 0,
-		map: "",
+		map: {
+			mode: "competitve",
+			name: "de_dust2",
+			phase: "live",
+			round: 4,
+			team_ct_score: 2,
+			team_t_score: 2,
+		},
 		flashKill: false,
 		snackbarText: "",
 		notification: false,
