@@ -16,11 +16,17 @@
 	
 	<main id="main">
 		<section id="map">
-			<div class="name">{{ map.name }}</div>
+			<!-- <div class="name">{{ map.name }}</div> -->
 			<div class="rounds">
-				<div class="round">{{ map.round }}</div>
-				<div class="score score-t">{{ map.team_t_score }}</div>
-				<div class="score score-ct">{{ map.team_ct_score }}</div>
+				<div class="round">
+					<span class="round__text">{{ map.round }}</span>
+				</div>
+				<div class="score score-t">
+					<span class="score__text">{{ map.team_t_score }}</span>
+				</div>
+				<div class="score score-ct">
+					<span class="score__text">{{ map.team_ct_score }}</span>
+				</div>
 			</div>
 		</section>
 		<section id="bombTimer" v-if="bombTimer">
@@ -108,7 +114,7 @@
 		</section>
 		<section id="state">
 			<ul class="health-armor">
-				<li class="health">
+				<li class="health" :class="{'red': player.health <= 20}">
 					<span class="health__text">
 						<i class="material-icons">add</i>
 					</span>

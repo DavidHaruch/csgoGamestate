@@ -35,8 +35,6 @@ var vm = new Vue({
 			// console.log(response);
 		});
 		socket.on("flashKill",function (response) {
-			console.log(response);
-
 			// this should be put into a function for notifications
 
 			var timeout_active = false;

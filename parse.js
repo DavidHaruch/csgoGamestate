@@ -1072,8 +1072,8 @@ module.exports = {
 	},	
 	organizeMap: function (json) {
 		var csgoJson = JSON.parse(json);
-		if (csgoJson) {
-			var csgoMap  = csgoJson.map;
+		var csgoMap  = csgoJson.map;
+		if (csgoMap) {
 
 			var newMap = {
 				mode: csgoMap.mode,

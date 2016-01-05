@@ -1,10 +1,17 @@
 $p: #3F51B5
 $a: #18FFFF
 
+$bg_color: #eee
+
+$color_ct: #ADC3D9
+$color_t: #C5A561
+
 @import 'vanilla.scss'
 
 #map
 	display: flex
+	background-color: darken($bg_color,10%)
+	padding: 1rem 0
 
 .rounds
 	display: flex
@@ -18,6 +25,7 @@ $a: #18FFFF
 	flex-direction: column
 	align-items: center
 	font-weight: 700
+	margin: 0 2rem
 	&::before
 		content: "round"
 		font-size: 12px
@@ -25,31 +33,59 @@ $a: #18FFFF
 		color: rgba(0,0,0,0.54)
 		font-weight: 500
 
+.round__text,.score__text
+	width: 100%
+	text-align: center
+
 .score
 	display: inline-flex
 	flex-direction: column
 	align-items: center
+	font-weight: bold
 	&::before
 		content: ''
 		height: 32px
 		width: 32px
 		display: block
 		background-size: contain
+		background-repeat: no-repeat
+		background-color: darken($bg_color,10%)
+		padding-bottom: 0.25rem
+
+.score__text
+	line-height: 1
 
 .score-ct
 	order: 0
-	color: blue
+	color: darken($color_ct,20%)
 	&::before
 		background-image: url("/img/ct.png")
 .score-t
 	order: 2
-	color: orange
+	color: darken($color_t,20%)
 	&::before
 		background-image: url("/img/t.png")
+
+//////////////////////////////////////////////////////
 
 .health-armor
 	list-style-type: none
 	display: flex
+
+.health__text,.armor__text
+	display: flex
+
+.health__number,.armor__number
+	line-height: 1
+
+.health,.armor
+	display: inline-flex
+	align-items: center
+
+.health
+	margin-right: 1rem
+
+//////////////////////////////////////////////////////
 
 .weapon
 	padding: 1rem
