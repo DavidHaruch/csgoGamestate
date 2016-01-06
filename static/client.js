@@ -68,6 +68,9 @@ var vm = new Vue({
 			team_ct_score: 2,
 			team_t_score: 2,
 		},
+		round: {
+
+		},
 		flashKill: false,
 		snackbarText: "",
 		notification: false,
@@ -80,13 +83,16 @@ var vm = new Vue({
 		socket.on("state",function (response) {
 			var newData = JSON.parse(response);
 			vm.$data.player = newData;
+			
+			var notifyCondition = vm.$data.player.kills >= 4;
+			// vm.notify("KAppa", notifyCondition);
 		});
 		socket.on("bombTimer",function (response) {
 			// console.log(response);
 			vm.$data.bombTimer = response;
 		});
 		socket.on("round",function (response) {
-			// console.log(response);
+			vm.$data.round = JSON.parse(response);
 		});
 		socket.on("flashKill",function (response) {
 			// this should be put into a function for notifications
@@ -163,9 +169,30 @@ var vm = new Vue({
 		},
 	},
 	methods: {
-		flashedKills: function () {
-
-		},
+		// condition is the variable that will eval to true
+		// message (string) contains the message text
+		notify: function (message, condition) {
+			var notifyFalse = function () {
+				vm.$data.notification = false;
+			};
+			var	snackbarFalse = function () {
+				vm.$data.snackbarText = "";
+			};
+			var timeout_active = false;
+			if (condition === true) {
+				vm.$data.notification = true;
+				vm.$data.snackbarText = message;
+				if (!timeout_active) {
+					timeout_active = true;
+					setTimeout(function () {
+						vm.$data.notification = false;
+					}, notification_length);
+					setTimeout(function () {
+						vm.$data.snackbarText = "";
+					}, transition_time);
+				}
+			}
+		}
 	},
 });
 Vue.config.debug = true;
