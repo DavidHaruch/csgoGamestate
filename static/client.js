@@ -10,6 +10,8 @@ var transition_time = notification_length + 400; // in ms, from line 44 of main.
 var vm = new Vue({
 	el: '#body',
 	data: {
+		// I only put in placeholder data for when I want to work on the css without the game running
+		// It would be neat if there was something to make fake data to send to these gamestate progrmas
 		inventory: {
 			weapons: {
 				primary: {
@@ -83,9 +85,6 @@ var vm = new Vue({
 		socket.on("state",function (response) {
 			var newData = JSON.parse(response);
 			vm.$data.player = newData;
-			
-			var notifyCondition = vm.$data.player.kills >= 4;
-			// vm.notify("KAppa", notifyCondition);
 		});
 		socket.on("bombTimer",function (response) {
 			// console.log(response);
@@ -96,25 +95,7 @@ var vm = new Vue({
 		});
 		socket.on("flashKill",function (response) {
 			// this should be put into a function for notifications
-
-			var timeout_active = false;
-			if (response === true) {
-				vm.$data.flashKill = true;
-				vm.$data.notification = true;
-				vm.$data.snackbarText = "Kill while flashed";
-				if (!timeout_active) {
-					timeout_active = true;
-					setTimeout(function () {
-						vm.$data.flashKill = false;
-						vm.$data.notification = false;
-					}, notification_length);
-					setTimeout(function () {
-						vm.$data.snackbarText = "";
-					}, transition_time);
-				}
-			}
-			
-			
+			vm.notify("Kill while flashed", response);
 		});
 		socket.on("map", function (response) {
 			var newData = JSON.parse(response);
@@ -122,56 +103,12 @@ var vm = new Vue({
 		});
 	},
 	computed: {
-		// I have no idea how to make this DRY need help
-		isPrimary: function () {
-			if (this.inventory.currentWeapon == this.inventory.weapons.primary.name)
-				return true;
-		},
-		isSecondary: function () {
-			if (this.inventory.currentWeapon == this.inventory.weapons.secondary.name)
-				return true;
-		},
-		isKnife: function () {
-			if (this.inventory.currentWeapon == this.inventory.weapons.knife.name)
-				return true;
-		},
-		isHE: function () {
-			if (this.inventory.currentWeapon == "weapon_hegrenade")
-				return true;
-		},
-		isFlash: function () {
-			if (this.inventory.currentWeapon == "weapon_flashbang")
-				return true;
-		},
-		isSmoke: function () {
-			if (this.inventory.currentWeapon == "weapon_smokegrenade")
-				return true;
-		},
-		isMolly: function () {
-			if (this.inventory.currentWeapon == "weapon_molotov")
-				return true;
-		},
-		isInc: function () {
-			if (this.inventory.currentWeapon == "weapon_incgrenade")
-				return true;
-		},
-		isDecoy: function () {
-			if (this.inventory.currentWeapon == "weapon_decoy")
-				return true;
-		},
-		isC4: function () {
-			if (this.inventory.currentWeapon == "weapon_c4")
-				return true;
-		},
-		isZeus: function () {
-			if (this.inventory.currentWeapon == "weapon_taser")
-				return true;
-		},
 	},
 	methods: {
 		// condition is the variable that will eval to true
 		// message (string) contains the message text
-		notify: function (message, condition) {
+		// repeat = bool should this message only show once?
+		notify: function (message, condition, repeat) {
 			var notifyFalse = function () {
 				vm.$data.notification = false;
 			};
@@ -192,11 +129,23 @@ var vm = new Vue({
 					}, transition_time);
 				}
 			}
-		}
+		},
 	},
+	watch: {
+		'inventory.currentWeapon.type': function (newVal, oldVal) {
+			if (document.getElementById(oldVal)) {
+				document.getElementById(oldVal).classList.toggle("weapon-selected");				
+			}
+			if (document.getElementById(newVal)) {
+				document.getElementById(newVal).classList.toggle("weapon-selected");
+			}
+		}
+	}
 });
 Vue.config.debug = true;
 
+
+// I should probably move this to server side
 var weaponRealNames = {
 	weapon_cz75a: "CZ75-Auto",
 	weapon_deagle: "Desert Eagle",

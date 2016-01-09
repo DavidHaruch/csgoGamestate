@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width">
 	<title>csgoGameState - WebClient</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -16,7 +16,8 @@
 	
 	<main id="main">
 		<section id="map">
-			<!-- <div class="name">{{ map.name }}</div> -->
+			<h2 class="title">csgoGamestate</h2>
+			<h2 class="map__name">{{ map.name }}</h2>
 			<div class="rounds">
 				<div class="round">
 					<span class="round__text">{{ map.round }}</span>
@@ -37,7 +38,7 @@
 		<section id="weapons" v-if="inventory">
 			<ul class="weapons">
 
-				<li class="weapons__primary weapon"  :class="{'weapon-selected': isPrimary}" v-if="inventory.weapons.primary.name">
+				<li class="weapons__primary weapon" id="Primary" v-if="inventory.weapons.primary.name">
 					<img :src="inventory.weapons.primary.img" class="weapon__img">
 
 					<span class="weapon__name">{{ inventory.weapons.primary.name | realName }}</span>
@@ -48,7 +49,7 @@
 					</div>
 				</li>
 
-				<li class="weapons__secondary weapon" v-if="inventory.weapons.secondary.name" :class="{'weapon-selected': isSecondary}">
+				<li class="weapons__secondary weapon" id="Secondary" v-if="inventory.weapons.secondary.name" :class="{'weapon-selected': isSecondary}">
 
 					<img :src="inventory.weapons.secondary.img" class="weapon__img" >
 
@@ -60,7 +61,7 @@
 					</div>
 				</li>
 
-				<li class="weapons__knife weapon" :class="{'weapon-selected': isKnife}">
+				<li class="weapons__knife weapon" id="Knife">
 
 					<img :src="inventory.weapons.knife.img" class="weapon__img">
 
@@ -69,32 +70,32 @@
 			</ul>
 
 			<ul class="grenades">
-				<li class="grenade" v-if="inventory.weapons.he" :class="{'weapon-selected': isHE}">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_hegrenade.7b344756d5dbdda4fd2e583a227a670599889f59.png" alt="he outline" class="weapon__img">
+				<li class="grenade" id="hegrenade" v-if="inventory.weapons.he">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_hegrenade.7b344756d5dbdda4fd2e583a227a670599889f59.png" alt="he" class="weapon__img">
 					<div>HE</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.flashes" :class="{'weapon-selected': isFlash}">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_flashbang.bbde1307eeb99d78ef67c3a87a3a713023b63af2.png" alt="flash outline" class="weapon__img">
-					<div>Flash x {{ inventory.weapons.flashes }}</div>
+				<li class="grenade" id="flashbang" v-if="inventory.weapons.flashes">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_flashbang.bbde1307eeb99d78ef67c3a87a3a713023b63af2.png" alt="flash" class="weapon__img">
+					<div>Flash <span v-show="inventory.weapons.flashes > 1">{{ inventory.weapons.flashes }}</span></div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.smoke" :class="{'weapon-selected': isSmoke}">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_smokegrenade.8746d3fec5a1041d61412295aee74c7d873ccacb.png" alt="smoke outline" class="weapon__img">
+				<li class="grenade" id="smokegrenade" v-if="inventory.weapons.smoke">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_smokegrenade.8746d3fec5a1041d61412295aee74c7d873ccacb.png" alt="smoke" class="weapon__img">
 					<div>Smoke</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.decoy" :class="{'weapon-selected': isDecoy}">
+				<li class="grenade" id="decoy" v-if="inventory.weapons.decoy">
 					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_decoy.d09e626c3d81f1f262bbca6146407f279a24dd03.png" alt="decoy" class="weapon__img">
 					<div>Decoy</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.molly" :class="{'weapon-selected': isMolly}">
-					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_molotov.d700f0165e02bd9f2cb6bdb63bb76b4cac450b76.png" alt="molotov outline" class="weapon__img">
+				<li class="grenade" id="molotov" v-if="inventory.weapons.molly">
+					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_molotov.d700f0165e02bd9f2cb6bdb63bb76b4cac450b76.png" alt="molotov" class="weapon__img">
 					<div>Molly</div>
 				</li>
 
-				<li class="grenade" v-if="inventory.weapons.incgrenade" :class="{'weapon-selected': isInc}">
+				<li class="grenade" id="incgrenade" v-if="inventory.weapons.incgrenade">
 					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_incgrenade.94d31f4f1af7d2e695f403d9a55f2cd64f3459b2.png" alt="incendiary" class="weapon__img">
 					<div>Incendiary</div>
 				</li>
@@ -102,11 +103,11 @@
 			</ul>
 			<ul class="others">
 				<!-- others are c4 and zeus -->
-				<li class="bomb" v-if="inventory.bomb" :class="{'weapon-selected': isC4}">
+				<li class="bomb" id="C4" v-if="inventory.bomb">
 					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_c4.98f6ef853be4a712c684562b2460dd3e3ace8f64.png" class="weapon__img"  alt="bomb_csgo" >
 					<div class="bomb__name">C4</div>
 				</li>
-				<li class="zeus" v-if="inventory.weapons.zeus" :class="{'weapon-selected': isZeus}">
+				<li class="zeus" id="Zeus" v-if="inventory.weapons.zeus">
 					<img src="http://media.steampowered.com/apps/730/icons/econ/weapons/base_weapons/weapon_taser.3c80d155bf0547c377217920f2c7329c8b00d472.png" alt="taser" class="weapon__img">
 					<div class="zeus__name">Zeus</div>
 				</li>
@@ -147,8 +148,17 @@
 			</ul>
 		</section>
 
-
 	</main>
+	<footer class="footer">
+		<p>
+			made by emphaticpuma and <a href="https://github.com/emphaticpuma/csgoGamestate/graphs/contributors">contributors</a>
+		</p>
+		<ul class="footer__links">
+			<li><a href="https://steamcommunity.com/id/emphaticpuma">Steam</a></li>
+			<li><a href="https://github.com/emphaticpuma">Github</a></li>
+			<li><a href="https://emphaticpuma.github.io/csgoGamestate">Project Site</a></li>
+		</ul>
+	</footer>
 	<div class="snackbar" transition="snackbar" v-show="notification">
 		{{ snackbarText }}
 	</div>

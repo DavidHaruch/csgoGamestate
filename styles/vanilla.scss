@@ -20,12 +20,6 @@ pre {
 	word-wrap: break-word;
 }
 
-main {
-	display: flex;
-	flex-direction: column;
-	max-width: 800px;
-	margin: 0 auto;
-}
 
 main section {
 	flex-direction: column;
@@ -36,7 +30,6 @@ main section {
 ul {
 	padding: 0;
 	margin: 0;
-	margin-bottom: 1em;
 	list-style: circle inside;
 }
 
@@ -48,9 +41,6 @@ ul {
 }
 .grenade:not(:last-of-type) {
 	margin-right: 1rem;
-}
-.grenade img {
-	height: 50px;
 }
 .grenade div {
 	font-size: 0.75rem;
@@ -85,8 +75,11 @@ ul {
 }
 .ammo-current::after {
 	content: ' /';
-	font-size: 1.25rem;
+	font-size: .75em;
 	color: #000;
+}
+.ammo-reserver {
+	font-size: 1em;
 }
 
 .red {
